@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>人员列表</h2>
+        <input type="text" v-model="keyWord">
+        <ul>
+            <li v-for="(p,index) of filPersons" :key="p.id">
+                {{p.name}}--{{p.age}}---{{p.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+<!-- 
+    1.搜集用户输入 用v-model进行数据的绑定，定义keyWord来存储获取的值
+    2.拿用户输入的东西，进行匹配
+-->
+<script>
+    //用computed实现
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                keyWord: "",
+                persons: [
+                    { id: '001', name: '马冬梅', age: 39, sex: '女' },
+                    { id: '002', name: '周冬雨', age: 49, sex: '女' },
+                    { id: '003', name: '周杰伦', age: 69, sex: '男' },
+                    { id: '004', name: '温兆伦', age: 59, sex: '男' }
+                ],
+            }
+        },
+        // 计算属性靠返回值，依赖数据keyWord发生改变重新计算
+        computed:{
+            filPersons(){
+                return this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyWord) !== -1
+                })
+            }
+        }
+    })
+
+</script>
+
+</html>

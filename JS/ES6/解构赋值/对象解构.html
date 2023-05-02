@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // 对象解构
+        var obj = {
+            name:'胡伊玲',
+            age:18,
+            location:'武汉'
+        }
+        //obj对象里的location和window的location重名了，但是从后端拿的数据又不能改变，咱就重命名一下location:mylocation
+        // console.log(obj.name);
+        var {name,age,location:mylocation} = obj
+        console.log(name);
+        console.log(age);
+        console.log(location);
+        console.log(mylocation);
+
+
+        var obj2 = {
+            name:"ooo",
+            age:18,
+            sex:"男",
+            location:{
+                province:"湖北",
+                city:"武汉"
+            },
+            hobby:['唱','跳','rap','篮球']
+        }
+
+        var {
+            name,
+            age,
+            sex,
+            location:{
+                province,
+                city
+            },
+            hobby:[a,b,c,d]
+        } = obj2
+
+        console.log(name,age,sex,province,city,a,b,c,d);//唱
+    </script>
+</body>
+</html>

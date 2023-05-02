@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- Map 映射 -->
+<body>
+    <script>
+        let map = new Map();
+
+        //添加数据
+        map.set('王宝钏','挖野菜')
+        map.set('曹宏钰','收野菜')
+        map.set('王静','吃野菜')
+        map.set('王静','吃野菜')
+        map.set('史粤','野菜')
+        console.log(map);
+
+        // 取值
+        console.log(map.get('王宝钏'));
+
+        // map 遍历 
+        for(let [key,value] of map){
+            console.log([key,value]);
+        }
+    </script>
+</body>
+</html>

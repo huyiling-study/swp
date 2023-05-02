@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        Firstname:<input type="text" v-model="firstname"><br>
+        Lastname:<input type="text" v-model="lastname"><br>
+        FullName: <span>{{fullName}}</span>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+                firstname: 'hu',
+                lastname: "yiling"
+            }
+        },
+        // 确定只读不改，可以用简写方式
+        // 函数的名就是计算属性的名，函数就当getter函数用
+        // fullName表面是一个函数，实际上是执行完这个函数，往vm身上放了一个fullName属性 vm.fullName=值(fullName函数调用的结果)
+        computed: {
+            fullName() {
+                    console.log("被调用了");
+                    return this.firstname + "-" + this.lastname
+            }
+        }
+    })
+</script>
+
+</html>

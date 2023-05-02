@@ -1,0 +1,40 @@
+body .container {
+  width: 1180px;
+  margin: 0 auto;
+}
+body .col-lg-1 {
+  grid-column-end: span 1;
+}
+body .col-lg-2 {
+  grid-column-end: span 2;
+}
+body .col-lg-3 {
+  grid-column-end: span 3;
+}
+body .col-lg-4 {
+  grid-column-end: span 4;
+}
+body .col-lg-5 {
+  grid-column-end: span 5;
+}
+body .col-lg-6 {
+  grid-column-end: span 6;
+}
+body .col-lg-7 {
+  grid-column-end: span 7;
+}
+body .col-lg-8 {
+  grid-column-end: span 8;
+}
+body .col-lg-9 {
+  grid-column-end: span 9;
+}
+body .col-lg-10 {
+  grid-column-end: span 10;
+}
+body .col-lg-11 {
+  grid-column-end: span 11;
+}
+body .col-lg-12 {
+  grid-column-end: span 12;
+}

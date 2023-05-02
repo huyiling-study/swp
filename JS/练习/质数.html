@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 质数 ：1和本身能整除-->
+    <script>
+        var x = 4;
+        var zhiShu = true;
+        for (var i = 2; i <= x / 2; i++) {
+            if (x % i === 0) {
+                var zhiShu = false;
+            }
+            // console.log(i)
+        }
+
+        if (zhiShu) {
+            console.log("是")
+        }
+        else {
+            console.log("不是")
+        }
+
+
+
+    </script>
+</body>
+
+</html>

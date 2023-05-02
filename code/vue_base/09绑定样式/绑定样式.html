@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+        #t{
+            height: 50px;
+            width: 200px;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .a1{
+            border-radius: 25px;
+        }
+        .a2{
+            font-size: 30px;
+        }
+        .a3{
+            box-shadow: 10px 10px 10px #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <!-- 绑定class样式 -->
+        <!-- 绑定样式 字符串写法   适用于：样式的类名不确定，需动态指定-->
+        <div id="t" :class="color"  @click="changeColor">{{name}}</div>
+        <!-- 绑定样式 数组写法     适用于：要绑定的样式个数不确定、名字也不确定-->
+        <div id="t" :class="colorArr">{{name}}</div>
+        <!-- 绑定样式 对象写法     适用于：要绑定的样式个数确定、名字也确定，但是要动态绑定-->
+        <div id="t" :class="classObj">{{name}}</div>
+
+
+        <!-- 绑定style样式 -->
+        <!-- 对象写法 -->
+        <div id="t" :style="styleObj1">{{name}}</div>
+        <!-- 数组写法 -->
+        <div id="t" :style="[styleObj1,styleObj2]">{{name}}</div>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#root",
+        data() {
+            return {
+                name:"胡伊玲",
+                color:"red",
+                colorArr:['a1','a2','a3'],
+                classObj:{
+                    a1:true,
+                    a2:false
+                },
+                // 样式对象的key写成css里的驼峰样式
+                styleObj1:{
+                    fontSize:'40px',
+                    color:'green'
+                },
+                styleObj2:{
+                    backgroundColor:'grey'
+                }
+            }
+        },
+        methods: {
+            changeColor(){
+                const colArr = ['red','blue','yellow']
+                // console.log(Math.floor(Math.random()*3));
+                let index = Math.floor(Math.random()*3)
+                this.color = colArr[index]
+            }
+        },
+    })
+</script>
+</html>

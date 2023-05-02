@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button id="Btn1">存</button> 
+   <button id="Btn2">取</button> 
+   <button id="Btn3">删</button> 
+   <button id="Btn4">清除</button> 
+   <script>
+    // 控制台 application LocalStorage 可以查看
+    Btn1.onclick = function(){
+        localStorage.setItem('name','huyiling')
+        localStorage.setItem('age','18')
+
+        //存，只能存字符串，不能存对象，数字
+        //存对象 可用JSON stringify 将对象转换成字符串
+        localStorage.setItem('obj',JSON.stringify({name:'frank',age:18}))
+    }
+    Btn2.onclick = function(){
+        localStorage.getItem('name')
+        console.log(localStorage.getItem('name'));
+        
+        //去对象 可用JSON parse 将字符串转换成对象
+        console.log(JSON.parse(localStorage.getItem('obj')));
+    }
+    Btn3.onclick = function(){
+        localStorage.removeItem('age')
+    }
+    Btn4.onclick = function(){
+        localStorage.clear()
+    }
+   </script>
+</body>
+</html>

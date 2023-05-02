@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+
+1.将字符中单词用空格隔开
+已知传入的字符串中只有字母,每个单词的首字母大写，
+请将每个单词用空格隔开,只保留一个单词的首字母大写
+传入: "HelloMyworld"
+返回: "Hello my world"
+
+[思路】
+1、字符串转成数组
+split(""""）
+2、数组转成字符串
+join(""")
+
+
+ -->
+
+<body>
+    <script>
+        function wordofStr(str) {
+            // 1.将字符串分割为数组
+            var arr = str.split("");
+            // 第一个字母是大写下标为0，所有从下标1开始
+            for (var i = 1; i < arr.length; i++) {
+                //判断
+                if (arr[i] >= "A" && arr[i] <= "Z") {
+                    // 判断完进行转小写,插入空格操作
+                    arr[i] = arr[i].toLowerCase();
+                    arr.splice(i,0," ")
+                }
+            }
+            // 返回拼接的字符串
+            return arr.join("")
+        }
+
+        var str = wordofStr("HelloMyWorld")
+        alert(str)
+    </script>
+</body>
+
+</html>

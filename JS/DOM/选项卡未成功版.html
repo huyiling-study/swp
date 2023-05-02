@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 button {
+            width: 100px;
+            height: 30px;
+            background-color: powderblue;
+            color: plum;
+            font-size: 20px;
+            border: none;
+            box-shadow: grey 0 0 10px;
+            margin-right: 15px;
+        }
+
+        /* 设置选中样式 */
+        #div1 .active {
+            background-color: palegoldenrod;
+            color: orange;
+        }
+
+        #div1 div {
+            margin-top: 10px;
+            width: 340px;
+            height: 300px;
+            border: solid #ddd 2px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // var oDiv1 = document.getElementById("div1");
+            // var aBtns = oDiv1.getElementsByTagName("button");
+            // var aDivs = oDiv1.getElementsByTagName("div");
+
+            //通过循环，去给每一个按钮，添加点击事件
+            // for(var i = 0; i < aBtns.length; i++){
+            //     aBtns[i].index = i;
+            //     aBtns[i].onclick = function(){
+            //         //取消所有按钮的样式
+            //         for(var j = 0; j < aBtns.length; j++){
+            //             aBtns[j].className = '';
+            //             aDivs[j].style.display = 'none';
+            //             // alert(this.index)
+            //         }
+
+            //         this.className = 'active';
+            //         //通过按钮到的下标找到对应的div显示
+            //         aDivs[this.index].style.display = 'block';
+            //     }
+            // }
+            var oDiv1 = document.getElementById("div1");
+            var buttons = oDiv1.getElementsByTagName("button");
+            var odiv = oDiv1.getElementsByTagName("div");
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = function () {
+                    for (let j = 0; j < odiv.length; j++) {
+                        odiv[j].style.display = "none";
+                        buttons[j].className = ""
+                    }
+                    odiv[i].style.display = "block";
+                    buttons[i].className = "active"
+                    // console.log(i);
+                }
+            }
+        }
+    </script>
+</head>
+<!-- 
+    1.获取div1
+    2.获取div1下所有的button
+    3.获取div1下所有的div
+    4.遍历按钮组，给每一个按钮添加点击事件
+    4>1给当前点击的按钮添加被点击的样式
+    4>2遍历循环取消所有按钮样式，将div样式设置为none
+
+    思想：按钮下标和要显示div下标一致，通过点击按钮的下标去找到div
+    5.给每个按钮添加一个下标属性（检查是否拿到下标）
+    6.div拿到当前按钮的下标设置样式block
+ -->
+
+<body>
+    <div id="div1">
+        <button class="active">html</button>
+        <button>java</button>
+        <button>linux</button>
+        <div style="display: block;">111111111</div>
+        <div>222222222</div>
+        <div>333333333</div>
+    </div>
+
+
+    <!-- // // 全部隐藏
+        // for(let i=0;i<odiv.length;i++){
+        //     odiv[i].style.display="none"
+        // }
+        // // 给每个按钮添加点击事件
+        // for(let i=0;i<buttons.length;i++){
+        //     buttons[i].onclick=function(){
+        //         for(let j=0;j<odiv.length;j++){
+        //             odiv[j].style.display="none"
+        //             buttons[j].className=""
+        //         }
+        //         odiv[i].style.display="block"
+        //         buttons[i].className="active"
+        //     }
+        // } -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    创建一创建对象函数
+    1.创建变量，存放对象
+    2.对象名称与调用函数传入的实参相同
+    3.创建变量，存放该对象的材料（菜品举例）
+ -->
+<body>
+    <!-- 面向一个工厂，批量生产对象 -->
+    <script>
+        function createObj(name){
+            var obj = {}
+            obj.name = name;
+            obj.material = []
+            return obj
+        }
+        var obj1 = createObj('大盘鸡')
+        obj1.material = ['鸡肉','葱花','盐']
+        console.log(obj1);        
+    </script>
+</body>
+</html>

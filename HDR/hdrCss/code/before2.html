@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    main{width: 400px;
+        height: 30px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+
+    }
+    main div{
+        height: 30px;
+        line-height: 30px;
+    }
+    .a{
+        color:brown;
+        padding-left: 20px;
+        font-weight: bold;
+    }
+    /* 段落首行处理 */
+    /* 找到类为a的div的父元素，设置相对定位 */
+    .a::before{
+        content: "";
+        width: 4px;
+        height: 24px;
+        background-color: brown;
+        position: absolute;
+        left: 10px;
+        top: 3px;
+    }
+    .more{
+        font-size: 12px;
+        color:#555;
+    }
+</style>
+
+<body>
+    <main>
+        <div class="a">联系我们</div>
+        <div class="more">更多></div>
+    </main>
+</body>
+
+</html>

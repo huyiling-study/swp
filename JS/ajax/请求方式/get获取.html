@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 
+    form get post
+ -->
+<!-- 
+    ajax
+
+    get 偏向获取数据
+    post 偏向提交数据
+    put 偏向更新
+    delete 偏向删除
+     
+  -->
+<!-- 
+    nodejs ————json-sever （用json-server这个插件快速模拟一个后端接口）成本低
+   -->
+
+<body>
+  <button id="myget">get</button>
+  <script>
+        // get方法
+        // get方式没有post方式安全，get的数据会在地址中显示出来
+        myget.onclick = function () {
+            var xhr = new XMLHttpRequest()
+            // 拿出username=Frank&password=12345的数据(把你要查的数据用 ? 拼接到路径(接口)后面)
+            xhr.open("GET", "http://localhost:3000/users?username=Frank&password=123456")
+            // xhr.open("GET", "http://localhost:3000/users")
+            xhr.onload = function () {
+                if (/^2\d{2}$/.test(xhr.status)) {
+                  // 将字符串转换成json对象
+                    var jsondata = JSON.parse(xhr.responseText)
+                    console.log(jsondata);
+                }
+            }
+             // 异步 send放前放后都没关系
+            xhr.send()
+        }       
+  </script>
+</body>
+
+</html>

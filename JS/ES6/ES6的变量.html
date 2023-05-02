@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //``可换行
+        var myhtml = `<li>sjb</li>
+        <li>zz</li>
+        <li>ooo</li>`
+        document.write(myhtml)
+
+        // ``可变量、表达式、三目
+        var myname = "huyiling"
+        var str = `My name is ${myname}</br>
+        age:${10+8}</br>
+        sex:${10>8?"girl":"boy"}`
+        document.write(str)
+    </script>
+</body>
+</html>

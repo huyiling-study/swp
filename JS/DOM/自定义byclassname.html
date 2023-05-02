@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">
+        <ul>
+            <li>1</li>
+            <li class="oli">2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <div id="div2">
+        <ul>
+            <li>1</li>
+            <li class="oli">2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <script>
+        // 自定义ByClassName方法
+        function elementbyclassname(node, classname) {
+            var arr = []//存放符合条件的节点
+            // 获取node这个节点下所有的子节点（标签）
+            var nodes = node.getElementsByTagName("*")
+            for (var i = 0; i < nodes.length; i++) {
+                if(nodes[i].className == classname){
+                    arr.push(nodes[i])
+                }
+            }
+            return arr
+        }
+
+        var odiv2 = document.getElementById('div2')
+        var olis = elementbyclassname(odiv2,"oli")
+        for(var i=0;i<olis.length;i++){
+            olis[i].style.backgroundColor = "red"
+        }
+    </script>
+</body>
+
+</html>

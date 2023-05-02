@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    面向对象：继承，封装(封装构造函数)，多态
+ -->
+
+<body>
+    <script>
+        // 父级
+        function Dog({ name, type, age }) {
+            //this = new Object();
+            //添加属性
+            this.name = name;
+            this.type = type;
+            this.age = age;
+        }
+        /* 
+            通过构造函数的原型添加方法
+         */
+        Dog.prototype = {
+            run: function () {
+                alert(this.name + "会飞快的奔跑");
+            },
+            showSelf: function () {
+                alert(`这是一个${this.type}的，${this.age}岁的，叫${this.name}的小狗`);
+            }
+        }
+
+
+        /* 
+           分类更加细分的构造函数。继承
+         */
+        function Teddy({ name, type, age, color }) {
+            //1、继承父一级构造函数所有的属性
+            // call 强制改变this指向 
+            //将dog的this伪装成Teddy声明对象的方式 ，叫做构造函数的伪装
+            Dog.call(this, {
+                name: name,
+                type: type,
+                age: age
+            })
+            //2.添加自己的属性
+            this.color = color;
+
+        }
+
+
+
+        //原型链继承
+
+        // Teddy.prototype = Dog.prototype 错误写法（这样在子级构造函数的原型上添加的方法，父级也会添加上）
+
+        // 不改变父级原型上添加的方法 ，新的对象逐个赋函数上去
+        for(var funcName in Dog.prototype){
+            /* 子级构造函数的原型上添加的方法 和 父级构造函数的原型上添加的方法相同，
+            子级可以在子级的构造函数的原型上添加自己的方法，不会影响到父级方法，父级也不能执行子级方法 */
+            Teddy.prototype.funcName= Dog.prototype.funcName
+            // Teddy.prototype[funcName]= Dog.prototype[funcName]
+
+        }
+        // 在子级构造函数的原型上添加方法
+        Teddy.prototype.showColor = function(){
+            alert(this.color)
+        }
+
+
+        var xiaohong = new Teddy({
+            name: "小红",
+            type: "泰迪",
+            age: 10,
+            color: "红色"
+        })
+
+        var xiaohei = new Dog({
+            name: "小黑",
+            type: "泰迪",
+            age: 10,
+        })
+
+        console.log(xiaohong);
+        console.log(xiaohei);
+        xiaohong.showColor()
+        // xiaohei.showColor()//undefind 小黑是Dog构造的实例对象，没有showColor方法
+
+    </script>
+</body>
+
+</html>

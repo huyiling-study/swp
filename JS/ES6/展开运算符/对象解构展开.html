@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="myusername">
+    <input type="text" id="myage">
+    <input type="text" id="mylocation">
+    <button id="Btn">重置</button>
+    <div id="box"></div>
+    <script>
+
+        //假设后端给了数据
+        var obj = {
+            name: '黄狗',
+            age: 19,
+            location: '武汉',
+            id:'be*7y7e)8w9_qq-12%884o'
+        }
+
+        // function render() {
+        //     var { name,age,location } = obj
+        //     console.log(obj);
+        // }
+        function render({ name,age,location }) {
+            box.innerHTML = `name:${name} age:${age} location:${location}`;
+        }
+
+        Btn.onclick = function(){
+            //如果没有值就用原来自带的
+            var name = myusername.value ||obj.name
+            var age = myage.value ||obj.age
+            var location = mylocation.value ||obj.location
+
+            //19行后端传的数据有id字段，是唯一标识，我们不能该，并且要保留
+            // 就用展开运算符，把obj丢到新对象里，有修改的在添加上去（比如要修改name，age，location 像45-47行这样写）
+            var newobj = {
+                ...obj,
+                name,
+                age,
+                location
+            }
+            console.log(newobj);
+
+            // 亲嘴给后端
+
+            // console.log(myusername.value);
+            // console.log(myage.value);
+            //重新渲染页面
+            render(newobj)
+        }
+    </script>
+</body>
+
+</html>

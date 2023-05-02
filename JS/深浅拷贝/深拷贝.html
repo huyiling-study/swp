@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 深拷贝 -->
+
+<body>
+    <script>
+        var obj1 = {
+            name: "hyl",
+            location: {
+                city: "武汉",
+                province: "湖北省",
+                a: { b: { c: 1 } }
+            },
+            hobby: ['A', 'B', 'C'],
+            introduction: undefined
+        }
+
+        // 方法1
+        //可以复制undefined数据
+        var obj2 = {}
+
+        function deepCopy(o2, o1) {
+            for (var i in o1) {
+                //如果是对象，先弄成空对象，在递归
+                //?:表示为假 ————如果已经是undefined，就不执行toString
+                if (o1[i]?.toString() === "[object Object]") {
+                    o2[i] = {}
+                    deepCopy(o2[i], o1[i])
+                }
+                //数组
+                else if (Object.prototype.toString.call(o1[i]) === "[object Array]") {
+                    o2[i] = []
+                    deepCopy(o2[i], o1[i])
+                }
+                // 简单类型
+                else {
+                    o2[i] = o1[i]
+                }
+            }
+        }
+
+        deepCopy(obj2, obj1)
+        console.log(obj1, obj2);
+        obj2.location.a.b.c = 5
+        console.log(obj2);
+
+        // // 方法2
+        // 不可以复制undefined数据
+        // var obj2 = JSON.parse(JSON.stringify(obj1))
+        // obj2.hobby[0] = 'AAAA'
+        // console.log(obj2);
+        // console.log(obj1);
+
+    </script>
+</body>
+
+</html>

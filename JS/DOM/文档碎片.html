@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    测试代码运行时间
+    console.time("test1")
+    console.timeEnd("test1")
+
+    1.创建10W个节点添加到页面上
+    2.先创建10W结点，将节点插入到一个节点，最后将这一个节点添加到页面上
+ -->
+<body>
+    <script>
+        // 1
+        // 相当于我每次买东西都要下楼一次
+        console.time('test1');
+        for(var i = 0;i<10000;i++){
+            var newnode = document.createElement("div")
+            document.body.appendChild(newnode)
+        }
+        console.timeEnd('test1');
+
+        // 2 效率高  --文档碎片操作 
+        // 我把东西买完在上楼
+        console.time('test2')
+        var node = document.createElement('div')
+        for(var i =0;i<10000;i++){
+            var newdiv = document.createElement('div')
+            node.appendChild(newdiv)
+        }
+        document.body.appendChild(node)
+        console.timeEnd('test2')
+
+    </script>
+</body>
+</html>

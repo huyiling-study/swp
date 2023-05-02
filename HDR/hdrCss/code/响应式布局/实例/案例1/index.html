@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/primary.css">
+</head>
+
+<body onresize="menuDisplay()">
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="" class="logo">huyiling</a>
+                <!-- <button id="menu" class="xl">下拉</button> -->
+                <input type="button" class="xl" value="下拉" onclick="Xdisplay()">
+                <div class="collapse">
+                    <ul class="links" id="menu">
+                        <li><a href="">系统学习</a></li>
+                        <li><a href="">在线课程</a></li>
+                        <li><a href="">最近更新</a></li>
+                        <li><a href="">话题讨论</a></li>
+                    </ul>
+                    <div class="from">
+                        <a href="">登陆</a>
+                        <a href="" class="form-bg">注册</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">aaa</div>
+            <div class="col-lg-6">bbb</div>
+            <div class="col-lg-6">bbb</div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var menu = document.getElementById("menu")
+    function menuDisplay(){
+    let width = document.body.clientWidth;
+        if (width < 768) {
+            menu.style.display = "none"
+            // console.log("小于768")
+        } else {
+            menu.style.display = "flex"
+            // console.log("大于768")
+
+        }
+    }
+  
+    function Xdisplay() {
+        if (menu.style.display == "flex") {
+            menu.style.display = "none"
+            return 0;
+        }
+        menu.style.display = "flex"
+    }
+
+
+</script>
+
+</html>

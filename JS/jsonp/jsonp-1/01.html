@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- 
+        jsonp原理：动态创建script标签,src属性指向没有跨域限制
+      -->
+
+      <button id="myBtn">jsonp</button>
+      <script>
+        function callbackFunction(obj){
+            console.log(obj);
+        }
+
+        myBtn.onclick = function(){ 
+            var oscript = document.createElement('script')
+            oscript.src = `https://www.runoob.com/try/ajax/jsonp.php?
+            jsoncallback=callbackFunction`
+            // oscript.src = "01.txt"
+            document.body.appendChild(oscript)
+
+
+            oscript.onload = function(){
+                // 删除当前节点
+                oscript.remove()
+            }
+        }
+      </script>
+
+      <script>
+        /* 
+        注意：
+        1.后端接口形式必须 ***() ，需要后端配合
+        2.jsonp缺点：会动态创建script标签
+            1)onload 删除script标签
+            2)只能get请求， 没有put post...
+        */
+      </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+    "data":{
+        "list":[
+            {
+                "name": "111",
+                "imageUrl": "http://img1.lukou.com/static/p/fb/tab/1/20181211-151644.jpeg"
+            },
+            {
+                "name": "222",
+                "imageUrl": "http://img1.lukou.com/static/p/fb/tab/1/20181211-151644.jpeg"
+            },
+            {
+                "name": "333",
+                "imageUrl": "http://img1.lukou.com/static/p/fb/tab/1/20181211-151644.jpeg"
+            }
+        ]
+    }
+}

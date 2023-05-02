@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            padding: 160px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>1</h3>
+    <h3>2</h3>
+    <h3>3</h3>
+    <h3>4</h3>
+    <h3>5</h3>
+    <h3>6</h3>
+</body>
+<!-- 
+    实现：
+    关键在于setTimeout这个函数
+    由于还需一个变量来保存计时，考虑全局纯净，可以借助闭包来实现
+ -->
+ <!-- 
+    防抖定义：
+    对于短时间内连续触发的事件
+    在某个时间期限内，事件处理函数只执行一次
+  -->
+<script>
+    window.onscroll = unshake(debounce,200)
+
+    //fc参数为函数，delay延迟时间
+    function unshake(fc, delay) {
+        let timer = null;
+        return function () {
+            if (timer) {
+                clearTimeout(timer)
+            }
+            timer = setTimeout(fc, delay)
+        }
+    }
+
+    function debounce() {
+        let top = document.documentElement.scrollTop
+        console.log(top);
+    }
+
+    // 防抖松开才触发
+    // 
+
+</script>
+
+</html>

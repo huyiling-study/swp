@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: goldenrod;
+        }
+        a{
+            text-decoration: none;
+            font-size: 2em;
+            color: blueviolet;
+            border: solid 2px blueviolet;
+            box-shadow:0 0 15px blueviolet;
+            width: 250px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 相当与在btn后面多加了个div */
+        .btn::after{
+            content: '';
+            width: 0;
+            height: 100%;
+            background-color: crimson;
+            position: absolute;
+            z-index: -1;
+            /* 倾斜skew */
+            transform: skew(45deg);
+            transition: .3s;
+        }
+        .btn:hover::after{
+            width: 150%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <a href="" class="btn">
+            houdunren
+        </a>
+    </main>
+</body>
+</html>

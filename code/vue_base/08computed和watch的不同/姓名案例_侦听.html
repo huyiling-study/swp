@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+    </style>
+</head>
+<!-- 
+    在监听属性中 可以开启异步任务
+ -->
+<body>
+    <div id="root">
+        Firstname:<input type="text" v-model="firstname"><br>
+        Lastname:<input type="text" v-model="lastname"><br>
+        FullName: <span>{{fullName}}</span>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+                firstname: 'hu',
+                lastname: "yiling",
+                fullName:'hu-yiling'
+            }
+        },
+        watch:{
+            // 监听姓或名发生改变时，就可拿到改变的值，存在newValue上，并更新fullName的值
+            firstname(newValue){
+                setTimeout(()=>{
+                    this.fullName = newValue + this.lastname
+                },1000)
+            },
+            lastname(newValue){
+                this.fullName = this.firstname + newValue
+            }
+        }
+        
+    })
+</script>
+
+</html>

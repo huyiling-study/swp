@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    2: 封装一个数组变对象的函数
+输入 var arr = ['name','fanzhen','age',12]
+输出:{name:'fanzhen',age:12}
+思路：这个题的大致思路其实，可以先不用函数，直接使用for循环等然后套一个数组进去验证一下，如果成功的话，把这段代码在封装到函数里。不过此时就要注意哪些是可变的量，哪些不是可变的量。
+封装之后，就可以直接调用了，可以传入不同的数组进行验证
+ -->
+
+<body>
+    <script>
+        var arr = ['name', 'hyl', 'age', 18]
+
+        // var keys = []
+        // var values = []
+
+        // for (var i = 0; i < arr.length; i++) {
+        //     // 判断key，value
+        //     if (i % 2 == 0) {
+        //         keys[keys.length] = arr[i]
+        //     } else {
+        //         values[values.length] = arr[i]
+        //     }
+        // }
+
+        // console.log(keys, values);
+
+        // var obj = {}
+        // for (var j = 0; j < keys.length; j++) {
+        //     obj[keys[j]] = values[j]
+        // }
+        // console.log(obj);
+
+
+        // 封装
+        var keys = []
+        var values = []
+        var obj = {}
+        function arrToObj(arr) {
+
+            for (var i = 0; i < arr.length; i++) {
+                // 判断key，value
+                if (i % 2 == 0) {
+                    keys[keys.length] = arr[i]
+                } else {
+                    values[values.length] = arr[i]
+                }
+            }
+
+            for (var j = 0; j < keys.length; j++) {
+                obj[keys[j]] = values[j]
+            }
+            return obj
+        }
+        
+        console.log(arrToObj(arr));
+    </script>
+</body>
+
+</html>

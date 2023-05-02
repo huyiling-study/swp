@@ -1,0 +1,94 @@
+// *{
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+// header{
+//     border-bottom: 3px solid green;
+//     box-shadow: 2px 5px 15px;
+//     nav{
+//         padding: 30px 10px;
+//         width: 1200px;
+//         // margin: 0 auto;
+//         margin-left: 80px;
+//         position: relative;
+//      ul{
+//         background-color:#ddd;
+//         display: flex;
+//         padding: 5px;
+//        li{
+//         flex: 1;
+//         text-align: center;
+//         list-style: none;
+//         display: inline-block;
+//         border-right: 1px white solid;
+//         &:last-child{
+//             border-right: none;
+//         }
+//         a{
+//              text-decoration: none;
+//         }
+//        }
+//      }  
+//      div.buttons{
+//         position: absolute;
+//         top: 33px;
+//         right: -100px;
+//         border-radius: 15px;
+//         button{
+//             width: 25px;
+//             height: 10px;
+//             &:hover{
+//                 background-color: darkcyan;
+//                 border: none;
+//             }
+//         }
+//      } 
+//     }
+// }
+
+//黄大师弹性盒子
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    width: 100vw;
+    height: 50px;
+    // background-color: red;
+    display: flex;
+    border-bottom: solid 2px gray;
+    nav{
+        flex:1;
+        display: flex;
+        ul{
+            flex: 1;
+            // background-color: aquamarine;
+            display: flex;
+            list-style: none;
+            li{
+                flex: 1;
+                height: 50px;
+                display: flex;
+                a{
+                    text-decoration: none;
+                    color: #ddd;
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+        .buttons{
+            width: 100px;
+            height: 50px;
+            // background-color: green;
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            
+        }
+    }
+}

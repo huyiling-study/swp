@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="mytext">
+    <button id="myadd">add</button>
+    <ul class="list">
+
+    </ul>
+    <script type="module">
+        import ajax from "./util.js"
+
+        // console.log(ajax);
+        class ToduList {
+            constructor(select) {
+                this.listEle = document.querySelector(select)
+                this.listdata = [] //存列表数据
+                this.init()
+            }
+            //初始化
+            init() {
+                //绑定事件
+                this.bindEvent()
+                // 获取数据的方法 
+                this.getItem()
+            }
+
+            // 绑定事件
+            bindEvent() {
+                this.listEle.onclick = (ev) => {
+                    // console.log(this);
+                    // console.log(ev.target.nodeName)
+                    //li也可以拿到事件源，为了避免点li也删掉，我们要判断nodeName
+                    if (ev.target.nodeName === "BUTTON") {
+                        this.removeItem(ev.target)
+                    }
+                }
+            }
+
+            getItem() {
+                // 获取数据
+                ajax({
+                    url: "http://localhost:3000/list",
+                    /* 
+                        函数内部嵌套函数，就会有this指向问题 
+                        解决方式有3种：
+                        1.创建一个 _this变量来存储父函数this(就是嵌套在外层的函数) var _this = this
+                        2.直接改变this指向 this.bind(this)
+                        3.直接使用箭头函数（箭头函数的this是指向父级this的）
+                    */
+                    // success:function(res){
+                    //     // console.log(res);
+                    //     this.listdata = res
+
+                    //     // 调用渲染页面方法
+                    //     this.render()
+                    // },
+                    // 这里选择 箭头函数 方法解决
+                    success: (res) => {
+                        // console.log(this)
+                        this.listdata = res
+                        this.render()
+                    },
+                    error: function () {
+                        // console.log(err)
+                    }
+                })
+            }
+
+            //添加(在数据库添加后，成功回调，页面添加)
+            addItem(text) {
+                ajax({
+                    url: `http://localhost:3000/list`,
+                    method: 'POST',
+                    data:{
+                        // text:text,
+                        text
+                    },
+                    success: (res) => {
+                        console.log('添加成功，id为',res);
+                        // location.reload()// 添加数据后页面会重新加载(全局刷新界面)
+                        // 我们要局部刷新,可以将listdata重新覆盖一下
+                        this.listdata = [...this.listdata,res]
+                        this.render()
+                    },
+                    error: function () {
+
+                    }
+                })
+            }
+
+            //删除
+            removeItem(target) {
+                // // 1.删除节点
+                target.parentNode.remove()
+                // 拿目标源身上的id
+                // console.log(target.dataset.index);
+                // // 2.删除数据库数据
+                // // 要删除数据我们现在要考虑一个问题，怎么拿到我们要删除的id呢? 在button上设置自定义属性
+                ajax({
+                    url: `http://localhost:3000/list/${target.dataset.index}`,
+                    method: 'DELETE',
+                    success: (res) => {
+                        console.log('删除成功，id为' + target.dataset.index);
+                    },
+                    error: function () {
+
+                    }
+                })
+            }
+            //更新
+            updataItem() {
+
+            }
+
+            // 渲染界面的方法 
+            render() {
+                /* 为什么是item.text?
+                 因为我们请求回来是一个数组，
+                 里面每一个元素是一个对象,
+                 我们要做的就是将这个对象的text显示*/
+                this.listEle.innerHTML = this.listdata.map(item => `
+                <li>
+                    ${item.text}
+                    <button data-index=${item.id}>del</button>
+                </li>
+                `).join("")
+            }
+        }
+
+
+        var obj = new ToduList('.list')
+        // console.log(obj);
+
+        myadd.onclick = function () {
+            //obj对象调用add方法，将text的value添加上去
+            obj.addItem(mytext.value)
+        }
+
+    </script>
+</body>
+
+</html>

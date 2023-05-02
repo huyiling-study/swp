@@ -1,0 +1,74 @@
+header {
+  border-bottom: 4px solid rgba(47, 192, 225);
+  box-shadow: 0 5px 10px #2fc1e1;
+}
+header .navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+}
+header .navbar .logo {
+  color: cadetblue;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1rem;
+}
+header .navbar .xl {
+  display: none;
+  padding: 4px 8px;
+  border: #ddd;
+  border-radius: 5px;
+  color: #555;
+}
+header .navbar .collapse {
+  display: flex;
+  flex: 1;
+}
+header .navbar .collapse .links {
+  display: flex;
+  margin-right: auto;
+}
+header .navbar .collapse .links a {
+  margin: 0 10px;
+}
+header .navbar .collapse .links a:hover {
+  font-weight: 800;
+}
+header .navbar .from a {
+  border: solid 1px #16a085;
+  border-radius: 0.3rem;
+  padding: 0.3rem 1rem;
+}
+header .navbar .from a.form-bg {
+  background: #16a085;
+  color: white;
+}
+@media only screen and (max-width: 960px) {
+  header .navbar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+  }
+  header .navbar .logo {
+    margin-right: auto;
+    flex: 1;
+  }
+  header .navbar .xl {
+    display: block;
+    position: absolute;
+  }
+  header .navbar .collapse {
+    flex-flow: column;
+    width: 100%;
+  }
+  header .navbar .collapse .links {
+    display: flex;
+    flex-direction: column;
+  }
+  header .navbar .collapse .links li {
+    padding: 0.3rem;
+  }
+  header .navbar .collapse .from {
+    margin-top: 1rem;
+  }
+}

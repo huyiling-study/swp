@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var screenWidth = document.body.clientWidth
+        var screenHeight = document.documentElement.clientHeight
+        console.log(screenWidth);
+        console.log(screenHeight);
+        // 随机生成div的函数
+        const hezi = () => {
+
+            setInterval(() => {
+                let div = document.createElement("div")
+                let left = Math.random()*(screenWidth-100 - 0) + 0
+                div.style.left = left + "px"
+
+            //     console.log(left);
+                setInterval(() => {
+                let top = div.offsetTop
+
+                div.style.top = top + 5 + "px"
+                }, 80);
+            document.body.appendChild(div)
+
+            }, 1000);
+        }
+
+
+
+
+
+
+    hezi()
+    </script>
+</body>
+
+</html>

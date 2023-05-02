@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- Set Map
+    集合：1.不重复 2.无序
+    【注】Set集合：键、值一样，只能存数据
+ -->
+<body>
+    <script>
+        let imgs = new Set()
+
+        imgs.add(100)
+        imgs.add(100)
+        imgs.add('hyl')
+        imgs.add('hyl')
+        // new Set创建了两个不同的对象
+        imgs.add(new Set('hello'))
+        imgs.add(new Set('hello'))
+
+        // console.log(imgs);
+
+        // 集合遍历
+        // entries keys values
+        //Set集合：键、值一样(key和value一样)
+        for(let item of imgs.entries()){
+            console.log(item);
+        }
+        for(let item of imgs.keys()){
+            console.log(item);
+        }
+        for(let item of imgs.values ()){
+            console.log(item);
+        }
+
+        // // 数组变集合
+        // var set = new Set([10,20,30,40,50])
+        // // console.log(set);
+
+        // //集合变数组
+        // var arr = [...set]
+        // console.log(arr);
+
+        // var arr = [1,2,3,4,5,6,7,8,9,10]
+        // arr = [...new Set(arr)]
+        // console.log(arr);
+    </script>
+</body>
+</html>

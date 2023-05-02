@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    同微宏（后端人promise）
+ -->
+ <!-- 查找对应作者的id，与id相同的评论 -->
+<body>
+    <script src="./util.js"></script>
+    <script>
+        // pajax({
+        //     url: "http://localhost:3000/news",
+        //     data: {
+        //         author: "黄达全"
+        //     }
+        // }).then(res=>{
+        //     console.log(res);
+        //     pajax({
+        //         url:"http://localhost:3000/comments",
+        //         data:{
+        //             newsid:res[0].id
+        //         }
+        //     }).then(res=>{
+        //         console.log(res);
+        //     })
+        // })   
+        // console.log(1111);    
+
+
+        // then 然后  将先前嵌套回调思想，变成链式调用
+        pajax({
+            url: "http://localhost:3000/news",
+            data: {
+                author: "黄达全"
+            }
+        }).then(res=>{
+            // 在then后return一个promise对象
+           return pajax({
+                url:"http://localhost:3000/comments",
+                data:{
+                    newsid:res[0].id
+                }
+            })
+        }).then(res=>{
+            //这个then当上面的 then 兑现承诺后执行 
+            console.log(res);
+        }).catch(err=>{
+            //失败走catch分支
+            console.log('error',err);
+        })  
+    </script>
+</body>
+
+</html>

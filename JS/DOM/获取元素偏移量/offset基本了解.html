@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+           width: 200px;
+           height: 100px;
+           background-color: yellow;
+           margin: 30px;
+           /* position: relative; */
+        }
+        #div2{
+            width: 100px;
+            height: 50px;
+            background-color: gray;
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<!-- 
+    拿到的是数值，可以进行计算
+    获取元素的宽高
+    offsetWidth
+    offsetHeight
+
+    offsetLeft 眼睛能看到实际距离第一个有定位的父节点距离
+    offsetTop
+
+ -->
+
+<body>
+   <div id="div1">
+    <div id="div2">
+
+    </div>
+   </div>
+</body>
+<script>
+    var div1 = document.getElementById('div1')
+    alert(getStyle(div1,"width"))
+    // alert(getComputedStyle(div1)["width"])
+    // getComputedStyle 读取的样式是最终样式，包括了内联样式、嵌入样式和外部样式。
+
+
+    alert(div1.offsetWidth)//width+border+padding
+    alert(div2.offsetTop);
+    alert(div2.offsetLeft);
+
+    function getStyle(node,cssStyle){
+        return node.currentStyle?node.currentStyle[cssStyle]:getComputedStyle(node)[cssStyle]
+    }
+</script>
+</html>

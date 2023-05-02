@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ouserName">
+    <input type="password" id="oPassword">
+    <input type="submit" value="提交" id="Btn">
+    <script>
+        Btn.onclick = function(){
+            let username = ouserName.value
+            let password = oPassword.value
+
+            // console.log(username,password);
+            // var obj = {
+            //     username:username,
+            //     password:password
+            // }
+            // 简写(当对象的key和value相同时可以简写)
+            var obj = {
+                username,
+                password
+            }
+            console.log("发给后端结构",obj);
+        }
+    </script>
+</body>
+</html>

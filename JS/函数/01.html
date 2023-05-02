@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    Js的垃圾回收机制会保留
+
+    函数有返回值，返回值必须是复杂类型，而且要赋值给外面的变量
+ -->
+<body>
+    <script>
+        function test(){
+            var name = "hyl"
+            console.log(name);
+            var obj = {
+                a:1,
+                b:2  
+            }
+            return obj
+        }
+
+        var obj1 = test()
+        var obj2 = test()
+        console.log(obj1===obj2);
+        console.log(obj1,obj2);
+
+        // 回收 
+        obj1 = null
+        obj2 = null
+        console.log(obj1,obj2);
+    </script>
+</body>
+</html>

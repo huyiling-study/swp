@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <p>ooooooo</p>
+        <span id="ospan">ppppppp</span>
+        <div>lll</div>
+        <div id="div1">
+            <p>111</p>
+            <p>222</p>
+            <p>333</p>
+        </div>
+
+    </div>
+
+    <!-- <button id="Btn">
+        点击删除div1和他的后代
+    </button> -->
+    <button id="Btn2">
+        删除
+    </button>
+    <script>
+
+        console.log(box.childNodes);// [text, p, text, span, text]
+        console.log(box.children);// [p, span]
+
+        console.log(box.firstChild);//#text
+        console.log(box.firstElementChild);//<p>ooooooo</p>
+
+        console.log(box.lastChild);//#text
+        console.log(box.lastElementChild);//<p>ooooooo</p>
+
+        console.log(box.parentNode.parentNode.parentNode);// #document
+        console.log(box.parentElement.parentElement.parentElement);// null
+
+        console.log(ospan.previousSibling);// #text
+        console.log(ospan.previousElementSibling);// p
+
+        console.log(ospan.nextSibling);// #text
+        console.log(ospan.nextElementSibling);// <div>lll</div>
+
+        Btn.onclick = function () {
+            div1.remove()
+        }
+        Btn2.onclick = function () {
+            var op = document.querySelectorAll('#div1>p')
+            console.log(op);
+            div1.removeChild(div1.children[op.length - 1])
+
+        }
+
+    </script>
+</body>
+
+</html>

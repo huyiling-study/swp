@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    继承和多态同一件事情的两种完全不同的侧重：
+    继承：侧重是从父一级构造函数，继承到属性和方法
+    多态：侧重是，子一级，自己重写和新增的属性和方法
+ -->
+<body>
+    <script>
+         // 父级
+         function Dog({ name, type, age }) {
+            //添加属性
+            this.name = name;
+            this.type = type;
+            this.age = age;
+        }
+        /* 
+            通过构造函数的原型添加方法
+         */
+        Dog.prototype = {
+            run: function () {
+                alert(this.name + "会飞快的奔跑");
+            },
+            showSelf: function () {
+                alert(`我是${this.type}，今年${this.age}岁的，叫${this.name}`);
+            }
+        }
+
+
+        /* 
+           分类更加细分的构造函数。继承
+         */
+        //子级
+        function Teddy({ name, type, age, color }) {
+            //1、继承父一级构造函数所有的属性
+            // call 强制改变this指向 
+            // 构造函数的伪装
+            Dog.call(this, {
+                name: name,
+                type: type,
+                age: age
+            })
+            //2.添加自己的属性
+            this.color = color;
+
+        }
+
+
+
+        // 原型链继承
+        // 不改变父级原型上添加的方法 ，新的对象逐个赋函数上去
+        for(var funcName in Dog.prototype){
+            Teddy.prototype.funcName= Dog.prototype.funcName
+        }
+        Teddy.prototype.showColor = function(){
+            alert(this.color)
+        }
+
+        // 在子一级构造函数重写showSelf方法
+        // 子一级重写的构造函数继承的方法它只在子一级生效，不会影响到父一级的构造方法
+        Teddy.prototype.showSelf = function(){
+            alert(`我是${this.type}，今年${this.age}岁的，叫${this.name}，是${this.color}颜色`);
+
+        }
+
+
+        var xiaohong = new Teddy({
+            name: "小红",
+            type: "泰迪",
+            age: 10,
+            color: "红色"
+        })
+
+        var xiaohe = new Dog({
+            name: "小黑",
+            type: "拉布拉多",
+            age: 8,
+        })
+
+
+        // 子一级重写的构造函数继承的方法它只在子一级生效，不会影响到父一级的构造方法
+        xiaohong.showSelf()
+        xiaohe.showSelf()
+    </script>
+</body>
+</html>

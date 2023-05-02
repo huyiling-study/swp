@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*  perspective放在父盒子里，统一观察所有子元素的透视情况*/
+            perspective: 600px;
+            border: solid 3px #ddd;
+            /* 对main元素设置透视和旋转 */
+            transform: perspective(900px) rotateY(45deg);
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            margin-right: 10px;
+            transform: rotateY(45deg);
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <div></div>
+        <div></div>
+    </main>
+</body>
+
+</html>

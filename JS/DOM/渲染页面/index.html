@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            overflow: hidden;
+            margin: 5px;
+            
+        }
+        li img{
+            float: left;
+        }
+        h3{
+            overflow: hidden;
+            /* overflow: auto; */
+            white-space:nowrap;
+            text-overflow: ellipsis;
+            
+        }
+    </style>
+
+</head>
+<body>
+    <ul>
+        <!-- <li>
+            <img src="https://p0.pipi.cn/mmdb/25bfd6928d3c6906d6ddd2e98830a1f536bf3.jpg?imageView2/1/w/160/h/220" alt="小丑奇缘海报封面">
+            <h3>小丑奇缘海报封面</h3>
+            <p>观众评分 9.8</p>
+        </li>
+        <li>
+            <img src="https://p0.pipi.cn/mmdb/25bfd69202f51b339eb12d1b2558b705265a0.jpg?imageView2/1/w/160/h/220" alt="扫黑行动海报封面">
+            <h3>扫黑行动海报封面</h3>
+            <p>观众评分 9.8</p>
+        </li>
+        <li>
+            <img src="https://p0.pipi.cn/mmdb/25bfd651ecd51bb860cf3e8f0a6c59618e166.jpg?imageView2/1/w/160/h/220" alt="陪你在全世界长大海报封面">
+            <h3>陪你在全世界长大海报封面</h3>
+            <p>观众评分 9.8</p>
+        </li> -->
+    </ul>
+    <script>
+        var filmList = [
+            {
+                url:"https://p0.pipi.cn/mmdb/25bfd6928d3c6906d6ddd2e98830a1f536bf3.jpg?imageView2/1/w/160/h/220",
+                title:"小丑奇缘海报封面",
+                grade:7.8
+            },
+            {
+                url:"https://p0.pipi.cn/mmdb/25bfd69202f51b339eb12d1b2558b705265a0.jpg?imageView2/1/w/160/h/220",
+                title:"扫黑行动海报封面",
+                grade:7.5
+            },
+            {
+                url:"https://p0.pipi.cn/mmdb/25bfd651ecd51bb860cf3e8f0a6c59618e166.jpg?imageView2/1/w/160/h/220",
+                title:"陪你在全世界长大海报封面",
+                grade:7.2
+            }
+        ]
+
+        var filmLists = filmList.map(function(item){
+            return `<li>
+            <img src="${item.url}" alt="">
+            <h3>${item.title}</h3>
+            <p>${item.grade}</p>
+        </li>`
+        })
+
+        // console.log(filmLists.join(''));
+
+        var oul = document.querySelector('ul')
+        oul.innerHTML = filmLists.join('')
+    </script>
+</body>
+</html>

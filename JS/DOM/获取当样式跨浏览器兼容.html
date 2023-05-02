@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" style="width: 200px; height:400px;background-color:blue;">
+        huyiling
+    </div>
+    <script>
+         var odiv = document.getElementById('div1')
+        //  跨浏览器的兼容
+        //   node：我要获取谁的css样式
+        //   cssStyle：什么样的css样式
+         function getStyle(node,cssStyle){
+            return node.currentStyle? node.currentStyle[cssStyle]:getComputedStyle(node)[cssStyle];
+         }
+         
+         alert(getStyle(odiv,'height'))
+        //获取当前的有效样式
+        //  alert(odiv.currentStyle['height'])//IE兼容
+        //  alert(getComputedStyle(odiv)['height'])//火狐、谷歌
+
+    </script>
+</body>
+</html>

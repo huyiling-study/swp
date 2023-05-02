@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 153 = 1^3+5^3+3^3 -->
+    <script>
+        for (var i = 100; i < 1000; i++) {
+            // 取出每一位
+            var a = i % 10
+            var b = parseInt(i / 10) % 10
+            var c = parseInt(i / 100)
+
+            var sum = Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3)
+            if (i == sum) {
+                document.write(i+'<br>')
+            }
+        }
+
+    </script>
+</body>
+
+</html>

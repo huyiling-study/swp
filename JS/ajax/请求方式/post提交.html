@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="mypost">post</button>
+    <script>
+        // post方法  提交 信息
+        // 如果给后端发一个post请求，要把提交的信息放到send中去做
+        mypost.onclick = function () {
+            var xhr = new XMLHttpRequest()
+            xhr.open("POST", "http://localhost:3000/users")
+            xhr.onload = function () {
+                //http的状态码200~299表示成功
+                // 我们在这里判断 如果http状态码为真，控制台就输出对象格式的，xhr对象的，responseText成员来获取的响应体内容
+                if (/^2\d{2}$/.test(xhr.status)) {
+                    console.log(JSON.parse(xhr.responseText));
+                }
+            }
+            /*
+                post支持的2种传输方式：
+                1.（key=value&key=value字符串格式）name=hyl&age=18
+                2.（json字符串格式）{"name":"hyl","age":"18"}
+            */
+            // 告诉后端提交的数据是什么样的格式
+            // 1.（form编码的格式）
+            // xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")//name=hyl&age=18
+            // xhr.send(`username=gandanger&password=123356`)//发送的username和password都添加到json文件了,可以查看json文件
+            // 2（json格式）
+            xhr.setRequestHeader("Content-Type", "application/json")
+            xhr.send(JSON.stringify(
+                {
+                    username: "胡伊玲",
+                    password: "123890"
+                }
+            ))
+        }
+
+        // 【注】同时用live-server和json-server有bug，live-server用post方法提交数据每次都会刷新界面
+        // 解决问题：可以将live-server换成 Preview on Web Server插件
+
+    </script>
+</body>
+
+</html>

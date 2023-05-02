@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 纯数字 ^$限制结尾开头都是数字 +代表可以是一个或多个数字
+        var reg = /^\d+$/g
+        console.log(reg.exec("000000"));
+
+        //纯小写
+        var reg1 = /^[a-z]+$/g
+
+        // 纯大写
+        var reg1 = /^[A-Z]+$/g
+    </script>
+</body>
+</html>

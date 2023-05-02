@@ -1,0 +1,29 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- false已经遗弃了 要么不传参，要么传true -->
+<body>
+    <script>
+        var xhr = new XMLHttpRequest()
+
+        xhr.open("GET","./1.json",false)
+
+        // false 同步，要等这个回调函数执行完，后面代码才能执行
+         xhr.onload = function(){
+            //这个回调函数是异步的，不执行，函数下面的代码会继续执行，不会阻塞后面代码执行
+            if(xhr.status === 200){
+                console.log(xhr.responseText);
+            }
+        }
+        
+        xhr.send()
+
+        console.log(11111111)
+    </script>
+</body>
+</html>

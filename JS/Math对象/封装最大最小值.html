@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // [min,max)
+        function getRandom(min,max){
+            if(min>max){
+                console.error('参数有误')
+                return
+            }
+            return parseInt(Math.random()*(max-min))+min
+        }
+        // console.log(getRandom(10,20));
+
+        //[min,max]
+        function getRandom(min,max){
+            if(min>max){
+                console.error('参数有误')
+                return
+            }
+            return parseInt(Math.random()*(max-min+1))+min
+        }
+        console.log(getRandom(10,12));
+
+    </script>
+</body>
+
+</html>

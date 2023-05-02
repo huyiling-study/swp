@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function FatchContainer(url){
+            return function(path){
+              return fetch(url+path)
+            }
+        }
+        
+        // 可以控制台network fatch 查看到 请求地址
+        var fetcha = FatchContainer('http://www.a.com')
+        fetcha('/aaa').then(res=>res.json()).then(err=>console.log(err))//http://www.a.com/aaa
+        fetcha('/bbb').then(res=>res.json()).then(err=>console.log(err))
+        fetcha('/ccc').then(res=>res.json()).then(err=>console.log(err))
+
+        var fetchb = FatchContainer('http://www.b.com')
+        fetchb('/aaa').then(res=>res.json()).then(err=>console.log(err))//http://www.a.com/aaa
+        fetchb('/bbb').then(res=>res.json()).then(err=>console.log(err))
+        fetchb('/ccc').then(res=>res.json()).then(err=>console.log(err))
+
+        // 闭包应用：函数柯里化
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "news":[
+        {"id":1,"title":"男人不自爱,就像烂白菜","author":"胡伊玲"},
+        {"id":2,"title":"惊现,女人花!","author":"黄达全"}
+    ],
+    "comments":[
+        {"id":1,"body":"烂白菜+1","newsid":1},
+        {"id":2,"body":"烂白菜+2","newsid":1},
+        {"id":3,"body":"女人花+1","newsid":2},
+        {"id":4,"body":"女人花+2","newsid":2}
+    ]
+}

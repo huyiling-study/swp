@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        触底加载数据
+     -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list {
+            width: 400px;
+            margin-top: 100px;
+        }
+        #list li{
+            overflow: hidden;
+        }
+        #list img{
+            float: left;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li>
+
+        </li>
+    </ul>
+
+    <script>
+        var arr1 = [
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd6928d3c6906d6ddd2e98830a1f536bf3.jpg?imageView2/1/w/160/h/220",
+                title: "小丑奇缘海报封面",
+                grade: 7.8
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd69202f51b339eb12d1b2558b705265a0.jpg?imageView2/1/w/160/h/220",
+                title: "扫黑行动海报封面",
+                grade: 7.5
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd651ecd51bb860cf3e8f0a6c59618e166.jpg?imageView2/1/w/160/h/220",
+                title: "陪你在全世界长大海报封面",
+                grade: 7.2
+            }
+        ]
+        var arr2 = [
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd6928d3c6906d6ddd2e98830a1f536bf3.jpg?imageView2/1/w/160/h/220",
+                title: "小丑奇缘海报封面",
+                grade: 7.8
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd69202f51b339eb12d1b2558b705265a0.jpg?imageView2/1/w/160/h/220",
+                title: "扫黑行动海报封面",
+                grade: 7.5
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd651ecd51bb860cf3e8f0a6c59618e166.jpg?imageView2/1/w/160/h/220",
+                title: "陪你在全世界长大海报封面",
+                grade: 7.2
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd6928d3c6906d6ddd2e98830a1f536bf3.jpg?imageView2/1/w/160/h/220",
+                title: "小丑奇缘海报封面",
+                grade: 7.8
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd69202f51b339eb12d1b2558b705265a0.jpg?imageView2/1/w/160/h/220",
+                title: "扫黑行动海报封面",
+                grade: 7.5
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd651ecd51bb860cf3e8f0a6c59618e166.jpg?imageView2/1/w/160/h/220",
+                title: "陪你在全世界长大海报封面",
+                grade: 7.2
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd6928d3c6906d6ddd2e98830a1f536bf3.jpg?imageView2/1/w/160/h/220",
+                title: "小丑奇缘海报封面",
+                grade: 7.8
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd69202f51b339eb12d1b2558b705265a0.jpg?imageView2/1/w/160/h/220",
+                title: "扫黑行动海报封面",
+                grade: 7.5
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd651ecd51bb860cf3e8f0a6c59618e166.jpg?imageView2/1/w/160/h/220",
+                title: "陪你在全世界长大海报封面",
+                grade: 7.2
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd6928d3c6906d6ddd2e98830a1f536bf3.jpg?imageView2/1/w/160/h/220",
+                title: "小丑奇缘海报封面",
+                grade: 7.8
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd69202f51b339eb12d1b2558b705265a0.jpg?imageView2/1/w/160/h/220",
+                title: "扫黑行动海报封面",
+                grade: 7.5
+            },
+            {
+                url: "https://p0.pipi.cn/mmdb/25bfd651ecd51bb860cf3e8f0a6c59618e166.jpg?imageView2/1/w/160/h/220",
+                title: "陪你在全世界长大海报封面",
+                grade: 7.2
+            }
+        ]
+        renderHTML(arr1)
+
+        // 渲染界面
+
+        function renderHTML(arr) {
+            for(var i=0;i<arr.length;i++){
+                var oli = document.createElement('li')
+                // oli.innerHTML = `<img src="${arr[i].url}" alt="">
+                // <h3>${arr[i].name}</h3>`
+                oli.innerHTML = `<img src="${arr[i].url}" alt="">
+                    <h3>${arr[i].title}</h3>
+                    <p>${arr[i].grade}</p>`
+                list.appendChild(oli)
+            }
+        }
+
+        var isLoading = false
+        window.onscroll = function () {
+            // list自身的高度
+            var listHeight = list.offsetHeight
+            //list距离顶部的偏移量
+            var listTop = list.offsetTop
+
+            // console.log(`${listHeight+listTop}`);
+
+            // 滚动的距离
+            var scollTop = document.documentElement.scrollTop || document.body.scrollTop
+            var windowHeight = document.documentElement.clientHeight
+
+            // console.log(`窗口高度${windowHeight},距离顶部滚动距离${Math.round(scollTop)},整个页面高度${windowHeight+Math.round(scollTop)}`);
+            // 1.当相等时触底
+            // if(Math.round(windowHeight+scollTop)===(listHeight+listTop)){
+            //     console.log("触底");
+            // }
+
+            //如果isloading为真
+            if (isLoading) return
+            // 2.给范围的触底（会多次触发）所以定义一个变量isloading，当isloading为真return出去，不执行后面
+            if ((listHeight + listTop) - Math.round(windowHeight + scollTop) < 100) {
+                console.log('触底');
+                isLoading = true
+
+                setTimeout(function () {
+                    renderHTML(arr2)
+
+                    isLoading = false//下一次到底事件继续触发
+                }, 2000)
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

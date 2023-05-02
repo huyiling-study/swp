@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #list{
+            list-style: none;
+            font-size: 8px;
+        }
+        #list li{
+            padding: 0 0 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="mysearch">
+    <ul id="list"></ul>
+
+    <script>
+        // 当输入框内容发生改变触发
+        mysearch.oninput = function (evt) {
+            console.log(evt.target.value);
+
+            var oscript = document.createElement('script')
+            oscript.src = `https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8
+            &json=1&prod=pc&from=pc_web&sugsid=36553,37683,37771,37778,37795,
+            36805,37537,37670,37741,26350,37489,37791&wd=${evt.target.value}
+            &req=2&csor=1&cb=test&_=1668785696912`
+            document.body.appendChild(oscript)
+
+            oscript.onload = function(){
+                oscript.remove()
+            }
+        }
+
+        function test(obj){
+            console.log(obj);
+
+            // 渲染界面
+            list.innerHTML = obj.g.map(item=>
+            `<li>${item.q}</li>`).join('')
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

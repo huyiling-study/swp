@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="vie initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::after {
+            content: 'Wele come';
+            /* 居中 */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            opacity: 0.3;
+        }
+
+        nav {
+            height: 8vh;
+            background-color: #34495e;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        nav a {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: white;
+            opacity: .8;
+            /*透明度*/
+            text-transform: uppercase;
+        }
+
+        nav a:nth-of-type(2) {
+            border-right: solid 1px silver;
+            border-left: solid 1px silver;
+        }
+
+        main {
+            flex: 1;
+            position: relative;
+        }
+
+        main>div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-color: #000; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* 让div先消失 */
+            transform: translateY(-100%);
+            /* 动画过渡时间 */
+            transition: 2s;
+            z-index: 1;
+        }
+
+        main>div:target {
+            transform: translateY(0px);
+        }
+
+        main>div:nth-of-type(1):target {
+            /* 锚被点击时触发的那个类target */
+            background: #1abc9c;
+        }
+
+        main>div:nth-of-type(2):target {
+            background: #f1c40f;
+        }
+
+        main>div:nth-of-type(3):target {
+            background: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="home">
+            <img src="./imgs/home.png" alt="">
+        </div>
+        <div id="video">
+            <img src="./imgs/personal.png" alt="">
+        </div>
+        <div id="live">
+            <img src="./imgs/video.png" alt="">
+        </div>
+    </main>
+    <nav>
+        <a href="#home">home</a>
+        <a href="#video">vido</a>
+        <a href="#live">live</a>
+    </nav>
+</body>
+
+</html>

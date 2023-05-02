@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+    </style>
+</head>
+<!-- 
+    监视的两种写法：
+    1.new Vue时传入watch配置
+    2.通过vm.$watch监视
+    3.简写就不能使用immediate，deep配置项了
+ -->
+<body>
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+        <!-- <button @click="ishot = !ishot">切换天气</button> -->
+        <button @click="changeWeather">切换天气</button>
+    </div>
+</body> 
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                ishot: "true",
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.ishot = !this.ishot
+            }
+        },
+        computed: {
+            info() {
+                return this.ishot ? "凉爽" : "炎热"
+            }
+        },
+        //1
+        //监视 ---检测到修改
+        // watch:{
+        //     ishot:{
+        //         immediate:true,//初始化时让handle先调用一次
+        //         // handle什么时候被调用？当ishot发生改变时(检测到修改前和修改后的变化)
+        //         handler(newValue,oldValue){
+        //             console.log("被修改了",newValue,oldValue);
+        //         }           
+        //     }
+        // watch:{
+        //     //简写：当配置项不需要时可以简写
+        //     //函数名就是监视的对象
+        //     ishot(newValue,oldValue){
+        //             console.log("被修改了",newValue,oldValue);
+        //         }           
+        //     }
+    })
+
+    //2
+    // vm.$watch('ishot', {
+    //     immediate: true,//初始化时让handle先调用一次
+    //     // handle什么时候被调用？当ishot发生改变时(检测到修改前和修改后的变化)
+    //     handler(newValue, oldValue) { 
+    //         console.log("被修改了", newValue, oldValue); 
+    //     }
+    // })
+    vm.$watch('ishot',function(newValue,oldValue){
+        console.log("被修改了", newValue, oldValue);
+    })
+</script>
+
+</html>

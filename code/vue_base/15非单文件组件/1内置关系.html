@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+</head>
+<!-- 
+    1.一个重要的内置关系：Vuecomponent.prototype.__proto__=== Vue.prototype
+    2.为什么有这个关系：让组件实例对象（vc）可以访问到 Vue原型上的属性、方法
+    组件实例对象是小型vm，与vm还差点意思，vc没有el配置项，data只能写函数式
+ -->
+
+<body>
+    <div id="root">
+        <school></school>
+    </div>
+</body>
+<script>
+    Vue.prototype.x = 99
+
+    //全局注册组件(component是个函数)
+    // Vue.component('school',school)
+    // 组件data要写成函数式
+    const school = Vue.extend({
+        name: 'school',
+        template: `
+        <div>
+            <h2>学校名称：{{name}}</h2>
+            <h2>学校地址：{{address}}</h2>
+            <button @click="showX">点我显示X</button>
+        </div>
+        `,
+        data() {
+            return {
+                name: 'huyiling',
+                address: '武汉'
+            }
+        },
+        methods: {
+            showX() {
+                console.log(this.x)
+            }
+        },
+    })
+
+    // 创建一个vm 
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                msg: '你好',
+            }
+        },
+        components: { school }
+    })
+    // console.log(school.prototype.__proto__ === Vue.prototype);
+
+
+
+
+    // // 定义一个构造函数
+    // function Demo(){
+    //     this.a = 1
+    //     this.b = 2
+    // }
+    // // 创建一个Demo实例
+    // const d = new Demo()
+
+    // console.log(Demo.prototype);
+    // console.log(d.prototype);//undefine 实例身上是没有prototype
+    // console.log(d.__proto__);
+    // console.log(Demo.prototype===d.__proto__);
+</script>
+
+</html>

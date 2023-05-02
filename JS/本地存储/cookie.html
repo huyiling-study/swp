@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    cookie 本地存储 
+    在发请求get、post不传参数，后端可以读浏览器的cookie
+    1.一条一条的存
+    2.key重名覆盖
+    3.内层可读取外层，外层不可访问内层
+
+    Expires/Max-Age过期时间：session（默认）关掉浏览器cookie就没了
+ -->
+
+<body>
+    <button id="saveBtn">存</button>
+    <button id="getBtn">取</button>
+    <script>
+        saveBtn.onclick = function () {
+            // 键值对形式
+            // 路径设置
+            document.cookie = "username=kerwin;path=/webProject/base/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8"
+            document.cookie = "age=18"
+
+            // 过期时间设置
+            var date = new Date()
+            date.setMinutes(date.getMinutes() + 1)
+            document.cookie = `username=hyl;expires=${date.toUTCString()}`
+        }
+        getBtn.onclick = function () {
+            getCookie()
+        }
+        // 将cookie值以对象的形式拿到
+        function getCookie(key) {
+            var mycookie = document.cookie
+            // console.log(mycookie);
+            var arr = mycookie.split(";")
+            // console.log(arr);
+            var obj = {}
+            for (var i = 0; i < arr.length; i++) {
+                var subArr = arr[i].split("=")
+                console.log(subArr);
+                obj[subArr[0]]=subArr[1]
+            }
+            console.log(obj);
+            return
+        }
+    </script>
+</body>
+
+</html>

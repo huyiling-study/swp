@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var xhr = new XMLHttpRequest()
+
+        xhr.open('GET', 'http://localhost:3000/users')
+
+        xhr.send()
+
+        xhr.onload = function () {
+            console.log(xhr.readyState);//4
+            if (xhr.readyState === 4 || /^2\d{2|$/.test(xhr.status)) {
+                console.log('响应内容已经解析完毕');
+                console.log('我是响应内容' + xhr.responseText);
+            }
+            else {
+                console.log('解析失败');
+            }
+        }
+        // xhr.onreadystatechange = function () {
+        //     console.log(xhr.readyState);//2 3 4
+        // }
+    </script>
+</body>
+
+</html>

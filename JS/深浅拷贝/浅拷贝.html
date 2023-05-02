@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 浅拷贝 (只适用与一级的)-->
+
+<body>
+    <script>
+        // 方法1
+        var obj1 = {name:"hyl"}
+        var obj2 = {}
+        for(let i in obj1){
+            obj2[i]=obj1[i]
+        }
+        obj2.name = "胡伊玲"
+        console.log(obj1,obj2);
+
+        // 方法2
+        // 把旧对象放新对象里展开
+        var obj3 ={...obj2}
+        console.log(obj3);
+        obj3.name = "huyiling"
+        console.log(obj3);
+
+
+    </script>
+</body>
+
+</html>

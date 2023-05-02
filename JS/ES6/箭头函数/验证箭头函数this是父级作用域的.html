@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 箭头函数没有this -->
+
+<body>
+    <button id="Btn">按钮</button>
+    <script>
+        // Btn.onclick = function (ev) {
+        //     console.log(this);
+        //     console.log(ev);
+        //     setTimeout(function () {
+        //         console.log(this);
+        //     }, 1000)
+        // }
+
+        Btn.onclick = ev => {
+            console.log(this);
+            console.log(ev);
+            setTimeout(function () {
+                console.log(this);
+            }, 1000)
+        }
+    </script>
+</body>
+
+</html>

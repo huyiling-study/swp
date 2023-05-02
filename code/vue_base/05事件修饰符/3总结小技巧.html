@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<!-- 
+    Vue中的事件修饰符:
+    --------常用---------
+    prevent：阻止默认事件
+    stop：阻止事件冒泡
+    once：事件只触发一次 
+    --------不常用-------
+    capture：使用事件的捕获模式
+    self：只有event.target是当前操作的元素才触发的事件
+    passive：事件的默认行为立即执行，无需等待事件回调执行完毕
+
+    
+ -->
+
+<body>
+    <div id="root">
+        <!-- 修饰符可以连续使用 -->
+        <div @click="showInfo">
+            <a href="http://www.baidu.com/"  @click.stop.prevent="showInfo">点我跳转</a>
+        </div>
+        <!-- 限制只有按ctrl+y才能触发事件 -->
+        <div>
+            <input type="text" placeholder="按ctrl+y显示文本框内容" @keydown.ctrl.y="show">
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                name: '胡伊玲'
+            }
+        },
+        methods: {
+            showInfo() {
+                alert('bubbling...')
+            },
+            show(e){
+                console.log(e.target.value);
+            }
+        }
+    })
+</script>
+
+</html>

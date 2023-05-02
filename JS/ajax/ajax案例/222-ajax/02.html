@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    有后端给的地址
+ -->
+<body>
+    <button id="Btn">按钮</button>
+    <ul id="mylist"></ul>
+    <script>
+        // http://www.xiongmaoyouxuan.com/api/tabs
+
+        Btn.onclick = function(){
+            var xhr = new XMLHttpRequest()
+
+            xhr.open('GET','http://www.xiongmaoyouxuan.com/api/tabs')
+
+            xhr.send()
+
+            xhr.onload = function(){
+                console.log(xhr.readyState);
+                if(/^2\d{2}$/.test(xhr.status)){
+                    // console.log(xhr.responseText);
+                    var jsondata = JSON.parse(xhr.responseText)
+                    // console.log(jsondata);
+                    render(jsondata)
+                }
+            }
+        }
+
+        //写到html页面的方法
+        function render(jsondata){
+            // console.log(jsondata.data.list);
+            var htmlwrite = jsondata.data.list.map(function(item){
+                return `<li>
+                    <img src = "${item.imageUrl}"/>
+                    <div>${item.name}</div>
+                    </li>`
+            })         
+            // console.log(htmlwrite);  
+            mylist.innerHTML = htmlwrite.join('') 
+        }
+    </script>
+</body>
+
+</html>

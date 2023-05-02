@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: cadetblue;
+        }
+        div{
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        main>div>strong{
+            /* 不加 display: block; 没有旋转效果 strong为行元素*/
+            display: inline-block;
+            transition: 2s;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            /* background-color: bisque; */
+            text-align: center;
+            color: cadetblue;
+        }
+        main div>strong:nth-of-type(1){
+            background-color: darkgoldenrod;
+        }
+        main div>strong:nth-of-type(2){
+            background-color: darkgray;
+        }
+        main div:hover>strong:nth-of-type(1){
+            /* 旋转 */
+            transform: rotate(360deg);
+        }
+        main div:hover>strong:nth-of-type(2){
+            transform: rotate(360deg);
+        }
+       
+    </style>
+</head>
+<body>
+    <main>
+        <div id="hyl">
+            <strong>h</strong>uyi<strong>l</strong>ing
+        </div>
+     </main>
+</body>
+</html>

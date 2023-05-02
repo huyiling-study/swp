@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数的默认参数
+        // var test = function (a = 1, b = 2) {
+        //     return a + b
+        // }
+
+        var test = (a = 1, b = 2) => a + b
+
+        //未传入参数时，函数会使用默参数
+        console.log(test());
+        console.log(test(10, 20));
+    </script>
+</body>
+
+</html>

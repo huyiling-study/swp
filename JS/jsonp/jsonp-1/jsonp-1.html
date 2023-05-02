@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fetch("https://i.maoyan.com/api/mmdb/movie/v3/list/hot.json?ct=%E6%AD%A6%E6%B1%89&ci=57&channelId=4")
+        .then(res=>res.json())
+        .then(err=>{
+            console.log(err);
+        })//会报错域 已被CORS策略阻止:has been blocked by CORS policy
+
+        // 同源策略：同域名 同端口号 同协议
+        // 不符合同源策略，浏览器为了安全，会阻止请求
+
+        /*
+            解决：
+            1.cors(跨域资源共享) ---由后端设置，Access-Control-Allow-Origin:* （允许所有域通过控制）
+            2.jsonp：需要前后端协作
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    entries
+    fromEntries
+ -->
+<body>
+    <script>
+        const object = {
+            key1:"value1",
+            key2:"value2"
+        }
+
+        // 对象转数组
+        const arr = Object.entries(object)
+        console.log(arr);//['key1', 'value1'] ['key2', 'value2']
+
+        var newObj = Object.fromEntries(arr)
+        console.log(newObj);//{key1: 'value1', key2: 'value2'}
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: antiquewhite; */
+        }
+        div{
+            
+            width: 200px;
+            height: 200px;
+            margin-right: 20px;
+            overflow: hidden;
+            outline: 5px solid #ddd;
+            transition: 1s;
+        }
+        div>img{
+            /* width: 100%; */
+        }
+        main:hover div{
+            /* 小于1缩，大于1放 */
+            transform: scale(.6);
+            /* 模糊（毛玻璃效果） */
+            filter: blur(15px);
+        }
+        main:hover div:hover{
+            transform: scale(1.6);
+            filter: none ;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div><img src="./1.png" alt=""></div>
+        <div><img src="./2.png" alt=""></div>
+        <div><img src="./1.png" alt=""></div>
+    </main>
+</body>
+</html>

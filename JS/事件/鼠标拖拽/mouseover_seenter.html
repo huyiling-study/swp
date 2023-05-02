@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            line-height: 100px;
+            text-align: center;
+            margin: 20px;
+            padding: 50px
+        }
+
+        div span {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            display: inline-block
+        }
+    </style>
+</head>
+
+<body>
+    <div id="aDivs">
+        <span>
+            mouseover
+        </span>
+    </div>
+    <div id="aDivs">
+        <span>
+            mouseenter
+        </span>
+    </div>
+    <script>
+        var aDivs = document.getElementsByTagName("div");
+
+        var i = 0;
+        aDivs[0].onmouseout = function () {
+            var oSpan = this.getElementsByTagName("span")[0];
+            oSpan.innerHTML = i++;
+        }
+
+        var j = 0;
+        aDivs[1].onmouseleave = function () {
+            var oSpan = this.getElementsByTagName("span")[0];
+            oSpan.innerHTML = j++;
+        }
+
+    </script>
+</body>
+
+</html>

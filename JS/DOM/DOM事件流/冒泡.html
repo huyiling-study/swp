@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: palevioletred
+        }
+    </style>
+</head>
+<!-- DOM事件流：
+捕获：window=>document=>body=>...
+目标：inner
+冒泡：outer=>body=>documnet=>window -->
+<body>
+    <div>
+
+    </div>
+    <script>
+        // 只在冒泡阶段触发
+        document.body.onclick = function(){
+            console.log('document.body');
+        }
+        document.documentElement.onclick = function(){
+            console.log("documnet.documentElement");
+        }
+        // DOM最外层的根节点
+        document.onclick = function(){
+            console.log("doucment");
+        }
+        // 绑window点击窗口任意地方都会触发
+        window.onclick = function(){
+            console.log("window");
+        }
+
+
+        // 按照dom2事件解绑，并进行配置，才能看到捕获的回调函数触发
+        
+
+        // //事件解绑2 dom2
+        // function hander(){
+        //     console.log("谢谢惠顾");
+        // }
+        // btn.addEventListener('click',hander)
+        // //移除该事件，就不执行该事件了
+        // btn.removeEventListener('click',hander)
+
+    </script>
+</body>
+</html>

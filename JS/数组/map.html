@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [10, 30, 60, 90]
+        // let newArr = arr.filter(function(item,index,arr){
+        //     return item>10
+        // })
+        var newArr = arr.reduce(function (prev, next, index, arr) {
+            alert(prev + ',' + next)
+            return prev + next
+        })
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

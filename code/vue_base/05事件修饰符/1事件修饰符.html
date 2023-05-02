@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 10px;
+        }
+        .demo1{
+            height: 45px;
+            background-color: darkkhaki;
+        }
+        .box1{
+            padding: 5px;
+            background-color: pink;
+        }
+        .box2{
+            background-color: palevioletred;
+        }
+        .list{
+            width: 200px;
+            height: 250px;
+            background-color: aliceblue;
+            overflow: scroll;
+        }
+        li{
+            padding: 50px;
+        }
+    </style>
+</head>
+<!-- 
+    Vue中的事件修饰符:
+    --------常用---------
+    prevent：阻止默认事件（eg.浏览器的刷新/鼠标右键默认显示窗格）
+    stop：阻止事件冒泡
+    once：事件只触发一次 
+    --------不常用-------
+    capture：使用事件的捕获模式
+    self：只有event.target是当前操作的元素才触发的事件
+    passive：事件的默认行为立即执行，无需等待事件回调执行完毕
+
+    
+ -->
+
+<body>
+    <div id="root">
+        <!-- prevent -->
+        <a href="http://www.baidu.com/" @click.prevent="showInfo">点我(prevent)跳转百度</a>
+        <!-- stop -->
+        <div class="demo1" @click="showInfo" >
+            <button @click.stop="showInfo">点我提示信息(stop冒泡)</button>
+        </div>
+        <!-- once -->
+        <button @click.once="showInfo">点击提示信息(once)</button>
+
+
+        <!-- capture 在捕获阶段就触发了-->
+        <div class="box1" @click.capture="showInfo">
+            div1(capture)
+            <div class="box2" @click="showInfo">
+                div2(capture)
+            </div>
+        </div>
+        <!-- self e.target是button，添加self修饰符说明e.target要在div上才能触发-->
+        <div class="demo1" @click.self="showInfo">
+            <button @click="showInfo">点我提示信息(self)</button>
+        </div>
+        <!-- 
+            passive
+            @scoll:给滚动条添加滚动事件 （滚动条到底不触发）
+            @wheel:滚轮滚动就触发（滚动条到底，滚动鼠标滚轮还会触发）
+                当滚动滚轮之后，首先去触发你滚动的那个事件，然后去执行你所指定的回调，回调执行完，在执行默认行为
+                就是说滚动滚轮，执行scoDemo回调函数，
+        -->
+        <!-- passive(事件默认行为立即执行，滚动让条直接滚动，不等回调函数执行完)  -->
+        <ul class="list" @wheel.passive="scoDemo">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</body>
+<script> 
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                name: '胡伊玲'
+            }
+        },
+        methods: {
+            // showInfo(e){
+            //     console.log(e.target);
+            //     // e.preventDefault()//阻止默认事件
+            //     // e.stopPropagation()//阻止向上冒泡
+            //     alert('同学你好！')
+            // }
+
+            //  @click.prevent="showInfo" 阻止了跳转
+            showInfo() {
+                alert('同学你好！')
+            },
+            scoDemo(){
+                for(let i=0;i<100000;i++){
+                    console.log('#')
+                }
+                console.log('累坏了');
+            }
+        }
+    })
+</script>
+
+</html>

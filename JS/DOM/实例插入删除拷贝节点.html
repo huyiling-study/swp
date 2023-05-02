@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            width: 200px;
+            background-color: plum;
+        }
+
+        #input1 {
+            width: 180px;
+            height: 30px;
+            padding-left: 15px;
+        }
+
+        #div1 button {
+            margin-left: 20px;
+            padding: 3px;
+        }
+
+        #div2 {
+            width: 200px;
+            height: 300px;
+            background-color: paleturquoise;
+            position: relative;
+        }
+
+        #div2 div {
+            padding: 2px;
+            border-bottom: dashed 1px white;
+        }
+
+        #div2 button {
+            padding: 0 5px;
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+<!-- 备注；
+
+实现节点的增加、拷贝、删除
+
+1.获取div1.div2和输入框
+
+​	获取div1下所有button标签
+
+2.给三个不同的按钮添加不同的点击函数
+
+2>1
+
+ 【实现增加功能】
+
+用我们刚刚拿到的button标签，用下标添加点击事件
+
+判断输入框是否有内容
+
+如果内容为空 弹出“输入内容不能为空”
+
+否者获取输入框内容，创建节点添加到页面上
+
+(创建新的div节点，创建文本节点，将文本节点添加到div内,并改变每一个div的背景样式，最后将新的div节点插入到div2中，清空输入框内容)
+
+2>2
+
+【实现删除功能】
+
+给删除这个按钮添加点击事件
+
+找到要删除的div节点的父节点，移除他最后一个孩子
+
+2>2
+
+【实现复制功能】 -->
+<body>
+    <div id="div1">
+        <input type="text" id="input1" placeholder="输入内容"><br>
+        <button>增加</button>
+        <button>删除</button>
+        <button>复制</button>
+    </div>
+    <div id="div2">
+        <div>xxx<button>x</button></div>
+        <div>xxx<button>x</button></div>
+        <div>xxx<button>x</button></div>
+    </div>
+
+    <script>
+        var div1 = document.getElementById("div1")
+        var div2 = document.getElementById("div2")
+        var input1 = document.getElementById('input1')
+
+        var buttons = document.getElementsByTagName('button')
+        console.log(buttons.length);
+        // 添加
+        buttons[0].onclick = function () {
+            if (!input1.value) {
+                alert("输入框内容不能为空")
+            } else {
+                var newnode = document.createElement('div')
+                var otext = document.createTextNode(input1.value)
+                newnode.appendChild(otext)
+                newnode.style.backgroundColor = randonColor()
+
+                // div2后添加newnode
+                div2.appendChild(newnode)
+                //每一次添加完节点，输入框内容要清空，便于下一次添加节点
+                input1.value = ""
+            }
+        }
+        //删除
+        buttons[1].onclick = function () {
+            if (div2.children.length > 0)
+                div2.removeChild(div2.lastChild)
+        }
+        //复制
+        buttons[2].onclick = function () {
+            var copynode = div2.cloneNode(true).lastChild
+            div2.appendChild(copynode)
+            console.log(copynode);
+        }
+
+        
+        function randonColor() {
+            var str = 'rgb(' + parseInt(Math.random() * 256) + ',' + parseInt(Math.random() * 256) + ',' + parseInt(Math.random() * 256) + ',' + parseInt(Math.random() * 256) + ')'
+            return str
+        }
+        // alert(randonColor())
+    </script>
+</body>
+
+</html>

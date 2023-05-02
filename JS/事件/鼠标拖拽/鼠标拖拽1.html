@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+<!-- 鼠标按下时移动
+松开时动 -->
+
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        box.onmousedown = function () {
+            console.log('鼠标按下');
+
+            // 当鼠标移动时临死绑定mousemove事件
+            document.onmousemove = function (evt) {
+                // console.log('鼠标移动');
+                // console.log(evt);
+
+                //让光标在元素中心
+                x = evt.clientX - box.offsetWidth / 2
+                y = evt.clientY - box.offsetHeight / 2
+
+                //处理边界
+                // 最小
+                if (y < 0) y = 0
+                if (x < 0) x = 0
+                // 最大
+                if (x >= document.documentElement.clientWidth - box.offsetWidth)
+                    x = document.documentElement.clientWidth - box.offsetWidth
+                if (y >= document.documentElement.clientHeight - box.offsetHeight)
+                    y = document.documentElement.clientHeight - box.offsetHeight
+                box.style.left = x + "px"
+                box.style.top = y + "px"
+
+                // 把盒子距离可视窗口左上角的距离赋给盒子
+                // box.style.left = evt.clientX + "px"
+                // box.style.top = evt.clientY + "px"
+
+
+
+
+            }
+        }
+        box.onmouseup = function () {
+            console.log('鼠标抬起');
+            // 给document绑定的鼠标移动事件解绑
+            document.onmousemove = null
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+</head>
+<!-- 
+    @click="a" 和 @click="a($event)" 效果一致，但是后者可以传参
+ -->
+<body>
+    <div id="root">
+        <button @click="showInfo1">显示提示信息1(未传参)</button>
+        <button @click="showInfo2($event,name)">显示提示信息2(传参)</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#root',
+        data(){
+            return{
+                name:'胡伊玲'
+            }
+        },
+        methods:{
+            showInfo1(event){
+                // alert('1.你好')
+                console.log(event.target.innerText);
+                console.log(this);//this指向vue实例对象
+            },
+            showInfo2(a,value){
+                console.log(a,value);
+                // 我们传参不能把event搞丢了，可以用 $event 占位，表示当前触发的目标事件
+                console.log(a.target.innerText);
+            }
+        }
+    })
+</script>
+</html>

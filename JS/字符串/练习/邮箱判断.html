@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--
+    1.查找@位置
+    2.查找@以后的邮箱格式是否符合 
+    3.判断@前的位置是否符合数字、字母、下划线
+ -->
+
+<!-- 
+    1.创建邮箱判断函数
+    （有参） 要输入邮箱
+    2.拿到@的下标
+    3.
+    1)判断是否找到下标
+    2)判断@以后的是否符合邮箱格式 @qq.com
+        拿到@后面的字符串
+        判断@后面的字符串是否跟 @qq.com一样
+    3)
+    3)1>判断@前字符串是否符合字母、数字、下划线
+    （在外面封装isABC函数来判断符合条件）
+    3)2>拿到@前面的字符串
+    3)3>遍历@前面的字符串
+    3)4>
+    3)4>1定义一个变量假设@前面的字符串都符合恒为真
+    3)4>2反向判断:如果符不符合字母、数字、下划线；这个变量为假
+    3)4>3返回这个变量的真假值
+ -->
+
+<body>
+    <script>
+        alert(isEmail("huyiling123@qq.com"))
+
+        function isEmail(email) {
+            var index = email.indexOf("@")
+            if (index == -1) {
+                return false
+            } else {
+                var endStr = email.substring(index)
+                if (endStr != "@qq.com") {
+                    return false
+                } else {
+                    var isYes = true;
+                    var beforeCode = email.substring(0, index)
+                    for (var i = 0; i < beforeCode.length; i++) {
+                        if (!isABC(beforeCode[i])) {
+                            isYes = false;
+                            break
+                        }
+                    }
+                    return isYes;
+                }
+            }
+        }
+
+        function isABC(charStr) {
+            if (charStr >= "a" && charStr <= "z" || charStr >= "A" && charStr <= "Z" || charStr >= 0 && charStr <= 9 || charStr == "_") {
+                return true
+            } else {
+                return false
+            }
+        }
+        //验证是否符合数字、字母、下划线
+        // alert(isABC('hu_yi9'))
+    </script>
+
+<!-- alert(isEmail('vfsj55_ee@qq.com'));
+
+function isEmail(email) {
+    //1.获取到@的下标
+    var index = email.indexOf("@")
+    //判断 没找到下标返回-1，不符合邮箱格式
+    if (index == -1) {
+        return false;
+    }
+    //2.判断@以后的格式是否符合
+    else {
+        //substring(index)只给了一个参数，那就提取到结尾
+        var endStr = email.substring(index)
+        //判断是否符合@qq.com
+        if (endStr !== "@qq.com") {
+            return false;
+        }
+        // 判断@前的格式
+        else {
+            //假设都符合
+            var isYes = true;
+            //将@之前的字符串提取出来
+            var username = email.substring(0, index)
+            for (var i = 0; i < username.length; i++) {
+                if (!isABC(username[i])) {
+                    isYes = false;
+                    break;
+                }
+            }
+            //如果没执行这个
+            return isYes;
+        }
+    }
+
+} -->
+</body>
+
+</html>
+
+

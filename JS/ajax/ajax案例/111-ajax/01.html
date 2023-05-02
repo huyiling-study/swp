@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    如果说ajax是道，那XMLHttpRequest()就是实现它的方法
+
+    ajax 全称：async javascript and xml
+
+
+    ajax相当于一个打电话的过程
+    1.打电话 new XMLHttpRequest()
+    2.电话号码录入 open
+    3.拨号 send
+    4.等待对方响应 （xhr.onload || xhr.readStateChange）
+
+    检查 ==> network ==> All（监听跟网络的请求） Fetch/XHR（把ajax请求的内容过滤出来）
+ -->
+<body>
+    <script>
+        // 1.创建XMLHttpRequest()
+        var xhr = new XMLHttpRequest()
+        console.log(xhr);
+
+        // 2.配置 open(请求方式，请求地址，是否异步) 异步参数未传，默认异步
+        //协议 域名(IP) 端口 路径 
+        // localhost本机域名  127.0.0.1本机ip
+        // http://127.0.0.1:5500/webProject/base/ajax/136-ajax/1.txt        
+        xhr.open('GET',"http://localhost:5500/webProject/base/ajax/ajax案例/111-ajax/01.json")
+
+
+        // 3.send 
+        xhr.send() //把这个号拨出去
+
+        // 4.接收数据，注册一个事件
+        //xhr.onload 
+        // 每次readystate变化时，readystatechange事件就触发，由onreadystatechange属性指定的事件处理函数就被调用
+        // onreadystatechange 要判断 readystate这个值是否是4
+        // xhr.onreadystatechange = function(){
+        //     //回调函数
+        //     console.log(xhr.readyState,xhr.responseText);
+        //     // ajax状态码为 4，http状态码为 200
+        //     if(xhr.readyState === 4 && xhr.status === 200){
+        //         console.log('数据解析完成',xhr.responseText)
+        //     }else if(xhr.readyState === 4 && xhr.status === 404){
+        //         console.error('未找到页面');
+        //         location.href = '404.html'
+        //     }
+        // }
+
+        xhr.onload = function(){
+            // console.log(xhr.readyState);//ajax状态码 是 4
+            if(/^2\d{2}$/.test(xhr.status)){
+                console.log(JSON.parse(xhr.responseText))
+            }else if(xhr.status === 404){
+                console.error('未找到页面');
+                // location.href = '404.html'
+            }
+        }
+
+    </script> 
+</body>
+</html>

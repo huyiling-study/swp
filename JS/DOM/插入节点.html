@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" title="cap"  class="box" ><em>小胡</em>div内容<strong>yyy</strong></div>
+    <button id="btn">插入节点</button>
+    <script>
+        var odiv = document.getElementById('div1')
+        var obtn = document.getElementById('btn')
+        obtn.onclick = function(){
+            //创建节点
+            // var op = document.createElement('p')
+            // //添加节点
+            // odiv.appendChild(op)
+            // var otext = document.createTextNode('<h1>huyiling<h1>')
+            // op.appendChild(otext)
+
+            // //body只有一个可以document.body拿到该节点
+            // //并在body子节点div前插入p节点
+            // // document.body.insertBefore(op,div1) 
+            
+            // // 用p节点替换div节点
+            // //先找到div的父节点body
+            // document.body.replaceChild(op,odiv)
+
+            //克隆节点本身
+            // var newnode = odiv.cloneNode()
+            //克隆节点本身，和他的子节点
+            // var newnode = odiv.cloneNode(true)
+            // document.body.appendChild(newnode)
+
+            //删除节点
+            document.body.remove(odiv)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    this指向当前函数的主人
+    this易混淆部分：
+    1.事件绑定
+    2.定时器
+ -->
+
+<body>
+    <button id="Btn">按钮</button>
+    <script>
+        /*
+            我们a1调用show函数和点击按钮 输出结果都是 10
+            ，我们并没将show函数赋给onclick
+            只是在button这里执行了下show这个函数
+            show的主人还是_this
+            _this还是构造函数的this，这个this就是a1
+        */
+
+
+        // 处理方式1
+        function Aaa() {
+            this.a = 10
+            var _this = this
+            // 1.事件绑定
+            Btn.onclick = function () {
+                _this.show()
+            }
+            // 2.定时器
+            setTimeout(function(){ _this.show()}, 1000)
+        }
+
+
+         // 处理方式2 强制转换this指向当前函数（不用猜this）管他this指向谁，现在在Aaa这个函数，就强行指向这个函数的主人 
+        // function Aaa() {
+        //     this.a = 10
+        //     var _this = this
+        //     // 1.事件绑定 (bind预设this指向，将this指向当前函数，this原本指向Btn被点击的这个事件)
+        //     Btn.onclick = this.show.bind(this)
+        //     // 2.定时器
+        //     setTimeout(this.show.bind(this),1000)
+
+        // }
+        
+        //在构造函数Aaa的原型上添加show方法
+        Aaa.prototype.show = function () {
+            console.log(this);
+        }
+
+        var a1 = new Aaa()
+        a1.show()
+    </script>
+</body>
+
+</html>

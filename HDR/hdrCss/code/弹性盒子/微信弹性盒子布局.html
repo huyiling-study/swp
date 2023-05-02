@@ -1,0 +1,172 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-color: #555;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+            /* 自动补全 */
+            background-color: beige;
+        }
+
+        footer {
+            height: 60px;
+            background-color: #ddd;
+            display: flex;
+            /* justify-content: space-evenly; */
+        }
+
+        section {
+            flex: 1;
+            /*弹性元素*/
+            border-right: solid 1px #555;
+            text-align: center;
+            display: flex;
+            /*弹性容器*/
+            flex-direction: column-reverse;
+        }
+
+        footer section:last-child {
+            border-right: none;
+        }
+
+        footer section h4 {
+            flex: 0 0 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        footer section ul {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            border: solid 1px #555;
+        }
+
+        footer section ul li {}
+    </style>
+</head>
+
+<body>
+    <main></main>
+    <footer>
+        <section>
+            <h4>课程</h4>
+            <ui>
+                <li>PHP</li>
+                <li>CSS</li>
+            </ui>
+        </section>
+        <section>
+            <h4>直播</h4>
+        </section>
+        <section>
+            <h4>软件</h4>
+        </section>
+    </footer>
+</body>
+
+</html> -->
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        color: #666;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    footer {
+        height: 50px;
+        background: blueviolet;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    footer section {
+        display: flex;
+        flex: 1 0;
+        flex-direction: column-reverse;
+        border-right: solid 1px #ddd;
+        border-top: solid 1px #ddd;
+    }
+
+    footer section:last-child {
+        border-right: none;
+    }
+
+    footer section h4 {
+        flex: 0 0 50px;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+    }
+
+    footer section ul {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        border: solid 1px #555;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+    footer section ul li {
+        flex: 1 0 50px;
+        border-bottom: solid 1px #555;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    footer section ul li:last-child {
+        border: none;
+    }
+</style>
+...
+
+<main></main>
+<footer>
+    <section>
+        <h4>教程</h4>
+        <ul>
+            <li>PHP</li>
+            <li>LINUx</li>
+        </ul>
+    </section>
+    <section>
+        <h4>直播</h4>
+    </section>
+</footer>

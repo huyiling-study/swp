@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- exec捕获 
+返回值：数组 -->
+<body>
+    <script>
+        var str = "The time is 2022-10-30 15:30:40 to 2022-11-22"
+        //捕获整体日期
+        var reg = /\d{4}-\d{1,2}-\d{1,2}/g
+        // 加小括号就是单独捕获 年 月 日
+        var reg1 = /(\d{4})-(\d{1,2})-(\d{1,2})/g
+
+        // console.log(reg.exec(str));
+
+        var newDate1 = reg.exec(str)
+        console.log(newDate1);
+        var newDate2 = reg.exec(str)
+        console.log(newDate2);
+        var newDate3 = reg1.exec(str)
+        console.log(newDate3);
+
+        console.log(newDate1[0].split("-").join("/"))
+        console.log(newDate2[0].split("-").join("/"))
+
+    </script>
+</body>
+</html>

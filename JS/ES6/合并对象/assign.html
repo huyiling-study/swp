@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    Object.assign 合并对象
+    【注】将所有传入的对象都合并到第一个对象中
+
+    浅拷贝：只拷贝地址
+    深拷贝：将复合数据类型重新生成一份，进行拷贝
+ -->
+<body>
+    <script>
+        var obj1 = {
+            a: 10
+        }
+        var obj2 = {
+            b: 20, c: 30
+        }
+        var obj3 = {
+            d: 40,
+            f: ["hello", "world", true]
+        }
+        Object.assign(obj1, obj2, obj3);
+        // console.log(obj1);//obj2，obj3是没有改变的
+
+        //obj1和obj3都改变了，只改变第一层（浅拷贝：修改obj3的值obj1也被修改了）
+        obj3.f.push("red")
+        console.log(obj1);
+        console.log(obj3);
+
+        // var arr1=[1,2,3]
+        // var arr2=[4,5,6]
+        // var arr3=[7,8,9]
+
+        // console.log(arr1.concat(arr2,arr3))
+
+
+
+    </script>
+</body>
+
+</html>

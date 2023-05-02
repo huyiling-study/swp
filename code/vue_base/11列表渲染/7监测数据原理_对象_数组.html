@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+            padding: 5px;
+        }
+    </style>
+</head>
+<!-- 
+    Vue监视数据的原理:
+        1. vue会监视data中所有层次的数据
+
+        2.如何监测对象中的数据?
+            通过setter实现监视,且要在new Vue时就传入要监测的数据。
+                (1).对象中后追加的属性,Vue默认不做响应式处理(无getter和setter)
+                (2).如需给后添加的属性做响应式，请使用如下API:
+                Vue.set(target.propertyName/index, value）
+                或vm.$set(target.propertyName/index,value)
+        3．如何监测数组中的数据?
+            通过包裹数组更新元素的方法实现,本质就是做了两件事:
+                (1).调用原生对应的方法对数组进行更新。
+                (2).重新解析模板,触发视图更新。
+
+        4.在Vue修改数组中的某个元素一定要用如下方法:
+            (1)使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()
+            (2)Vue.set()或vm.$set()
+            注：不能给vm或vm的根数据对象添加属性
+
+ -->
+<body>
+    <div id="root">
+        <h2>学生信息</h2>
+        <button @click="addSex">添加性别</button>
+        <p>姓名：{{student.name}}</p>
+        <p v-if="student.sex">性别：{{student.sex}}</p>
+        <p>年龄：{{student.age}}</p>
+        <h3>我的朋友们</h3><button @click="addNewFriend">添加朋友</button>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                {{index+1}}.{{f.name}}---{{f.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                student:{
+                    name:'胡伊玲',
+                    age:'18',
+                    friends:[
+                        {name:'小明',age:'38'},
+                        {name:'小红',age:'25'}
+                    ]
+                }
+            }
+        },
+        methods: {
+            addSex(){
+                // Vue.set(this.student,"sex","女")
+                this.$set(this.student,"sex","女")
+            },
+            // 数据监测数组原理————数组方法引起原数组发生改变的
+            // Vue 将被侦听的数组的变更方法进行了包裹（1）保留数组原方法 （2）生成新的虚拟DOM,触发视图更新
+            addNewFriend(){
+                this.student.friends.unshift({name:"小绿",age:"34"})
+            }
+        },
+    })
+
+    
+</script>
+
+</html>

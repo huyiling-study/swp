@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 1.创建数组
+2.遍历数组
+3.创建li节点，将数组元素赋给li节点
+4.创建按钮节点，改变按钮的值
+5.子节点按钮添加到li，将li添加到ul上
+
+6.给ul绑
+委托父节点帮忙办事
+判断事件源是不是我们点击的按钮，是的话移除该节点
+
+ -->
+<body>
+    <ul id="list">
+
+    </ul>
+    <script>
+        var arr = ['胡伊玲','曹','史']
+
+        for(var i =0;i<arr.length;i++){
+            var lis = document. createElement('li')
+            lis.innerHTML = arr[i]
+
+            var buttons = document.createElement('button')
+            buttons.innerHTML = "delete"
+
+            lis.appendChild(buttons)
+            list.appendChild(lis)
+        }
+        //要删除li我们找到ul 
+        list.onclick = function(evt){
+            // 获取到事件源的nodeName
+            console.log(evt.target.nodeName);
+            if(evt.target.nodeName === "BUTTON"){
+                //从父节点上移除
+                evt.target.parentNode.remove()
+            }
+        }
+    </script>
+</body>
+</html>

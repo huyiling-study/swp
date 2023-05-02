@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+    </style>
+</head>
+<!-- 
+    1.Vue中常用的按键别名
+    回车 ---enter
+    删除 ---delete
+    退出 ---esc
+    空格 ---space
+    换行 ---tab（特殊必须配合keydown使用）
+    上 ---up
+    下 ---down
+    左 ---left
+    右 ---right
+
+    2.Vue未提供别名的按键，可以使用按键原始的key值去绑定，短横线命名 kebab-case
+    eg:切换大小写的键 他的key==CapsLock 它的别名改成 @keyup.caps-lock="showInfo "
+
+    3.系统修饰键（用法特殊）
+        1)配合keyup使用：按下修饰键的同时，在按下其他键，随后释放其他键，事件才触发
+        2)配合keydown使用：正常触发事件
+
+ -->
+
+<body>
+    <div id="root">
+        <input type="text" placeholder="按下回车显示输入" @keydown.enter="showInfo ">
+    </div>
+</body>
+<script> 
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                name: '胡伊玲'
+            }
+        },
+        methods: {
+            showInfo(e){
+                // console.log(e.key, e.keyCode);
+                // if(e.keyCode !== 13) return
+                console.log(e.target.value);
+            }
+        }
+    })
+</script>
+
+</html>

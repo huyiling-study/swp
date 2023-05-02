@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.首字母大写
+        function CreateObj(name){
+            console.log(this);//this指向调用此函数创建的对象
+            this.name = name
+
+            this.cook = function(){
+                console.log(this.name);
+            }
+        }
+        //构造函数
+        var obj1 = new CreateObj('huyiling')// new过程 === 实例化这个过程
+        // 实例化对象已经生成了
+
+        console.log(obj1);//this指向调用此函数创建的对象
+
+
+
+        // 2.构造函数不写return
+
+
+        // 3.构造函数能当普通函数用吗？不能
+        function CreateObj(name){
+            console.log(this);//this指向window
+            this.name = name;
+        }
+        // 这个函数挂在window下调用了
+        //普通函数
+        var obj1 = CreateObj('hyl')
+        console.log(obj1,window.name)//undefined 'hyl'
+    </script>
+</body>
+</html>

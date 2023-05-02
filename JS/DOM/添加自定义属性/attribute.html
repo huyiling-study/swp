@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    name=""仅用于表单元素
+    document.documentElement 基于文档最外层节点
+
+ -->
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <input type="text" name="uname">
+
+    <script>
+        //Elements里面li节点都添加上了index属性
+        var lis = document.getElementsByTagName('li')
+        for(let i=0;i<lis.length;i++){
+            lis[i].setAttribute('index',i)
+        }
+        
+        console.log(document.getElementsByName('uname')[0]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- filter过滤当前数组每一个元素
+返回值：true false -->
+<!-- 
+    filter找到所有符合条件的
+    find找到符合条件的第一个
+ -->
+<body>
+    <script>
+        // var arr = [100,200,300,600]
+        // var arr1 = arr.filter(function(item){
+        //     // 满足return返回值的可以控制台输出
+        //     return item>200
+        // })
+        // console.log(arr1)
+
+        // filter找到所有符合条件的
+        var oclass= [{name:"hyl",age:18},{name:"chy",age:28},{name:"sy",age:38},{name:"wj",age:48}]
+        var classMate = oclass.filter(function(item){
+            return item.age>18
+        })
+        console.log(classMate);
+        //find找到符合条件的第一个
+        var oclass= [{name:"hyl",age:18},{name:"chy",age:28},{name:"sy",age:38},{name:"wj",age:48}]
+        var classMate = oclass.find(function(item){
+            return item.age>18
+        })
+        console.log(classMate);
+    </script>
+</body>
+</html>

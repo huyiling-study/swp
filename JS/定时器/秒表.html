@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <!-- 
+
+     -->
+</head>
+<body>
+    <div id="div1">
+        <span id="hour">00</span>
+        <span>:</span>
+        <span id="min">00</span>
+        <span>:</span>
+        <span id="sec">00</span>
+    </div>
+    <button id="start">开始</button>
+    <button id="res">复位</button>
+
+    <script>
+       function $(id){
+        return document.getElementById(id)
+       }
+
+       var i= 0;//总秒数
+       var timer = null;//记录定时器返回值
+       window.onload = function(){
+        //获取按钮
+        $("start").onclick = function(){
+            //去掉var time是全局变量
+            time = setInterval(function(){
+                i++;
+                //求秒
+                $("sec").innerHTML = doubleNum(i%60)
+                //求分
+                $("min").innerHTML = doubleNum(i/60)%60
+                //求时
+                $("sec").innerHTML = doubleNum(i%3600)
+            },1000)
+        }
+
+       }
+
+       function doubleNum(n){
+        if(n<10){
+            return "0"+n;
+        }else{
+            return n;
+        }
+       }
+    </script>
+</body>
+</html>

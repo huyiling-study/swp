@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        Firstname:<input type="text" v-model="firstname"><br>
+        Lastname:<input type="text" v-model="lastname"><br>
+        <!-- 
+           showFullName()  把showFullName的返回值插入
+           showFullName    把showFullName这个函数插入这里
+         -->
+        <!-- FullName: <span>{{showFullName}}</span> -->
+        FullName: <span>{{FullName()}}</span>
+        FullName: <span>{{FullName()}}</span>
+        FullName: <span>{{FullName()}}</span>
+        FullName: <span>{{FullName()}}</span>
+        FullName: <span>{{FullName()}}</span>
+
+
+    </div>
+</body>
+<script> 
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                firstname:'hu',
+                lastname:"yiling"
+            }
+        },
+        // methods 数据更新 解析模板 只要里面有插值语法肯定会重复调用
+        methods: {
+           FullName(){
+                console.log("@---showfullname");
+                return this.firstname+this.lastname
+           }
+        }
+    })
+</script>
+
+</html>

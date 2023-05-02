@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+    </style>
+</head>
+<!-- 
+    在计算属性中 不可以开启异步
+ -->
+<body>
+    <div id="root">
+        Firstname:<input type="text" v-model="firstname"><br>
+        Lastname:<input type="text" v-model="lastname"><br>
+        FullName: <span>{{fullName}}</span>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data() {
+            return {
+                firstname: 'hu',
+                lastname: "yiling"
+            }
+        },
+        computed: {
+            fullName() {
+                // setTimeout(() => {
+                    console.log("被调用了");
+                    return this.firstname + "-" + this.lastname
+                // }, 1000)
+            }
+        }
+    })
+</script>
+
+</html>

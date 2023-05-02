@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        #div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        // getBoundingClientRect
+
+        window.addEventListener("keydown", function (ev) {
+            var ev = ev || window.event
+            console.log(ev);
+            var odiv = document.getElementById('div')
+            var o = odiv.getBoundingClientRect()
+            console.log(o);
+            var left = o.left
+            var top = o.top
+            var alp = ev.key
+            console.log(alp);
+
+            if (left < 0) left = 0
+            if (top < 0) top = 0
+            if (left > document.documentElement.clientWidth - o.width)
+                left = document.documentElement.clientWidth - o.width
+            if (top > document.documentElement.clientHeight - o.height)
+                top = document.documentElement.clientHeight - o.height
+
+            switch (alp) {
+                case 'd':
+                    odiv.style.left = left + 10 + 'px'
+                    break;
+                case 'a':
+                    odiv.style.left = left - 10 + 'px'
+                    break;
+                case 's':
+                    odiv.style.top = top + 10 + 'px'
+                    break;
+                case 'w':
+                    odiv.style.top = top - 10 + 'px'
+                    break;
+            }
+        })
+    </script>
+</body>
+
+</html>

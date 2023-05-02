@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #A3CB38;
+        }
+
+        main {
+            height: 400px;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(#F79F1F, goldenrod, #C4E538);
+            border-radius: 50%;
+            position: relative;
+
+        }
+
+        main::after {
+            content: "";
+            border-radius: 50%;
+            width: 90%;
+            height: 90%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #A3CB38;
+        z-index: -1;
+        }
+        .line{
+            width: 80%;
+            height: 80%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%px);
+            background-color: #ddd;
+            border-radius:50% ;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="line">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </main>
+</body>
+
+</html>

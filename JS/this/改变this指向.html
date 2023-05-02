@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj1 = {
+            name:"obj1",
+            getName:function(a,b,c){
+                console.log('getName1',this.name);
+                console.log('参数',a,b,c);
+            }
+        }
+        var obj2 = {
+            name:"obj2",
+            getName:function(){
+                console.log('getName2',this.name);
+                console.log('参数',[a,b,c]);
+            }
+        }
+        //call/apply都可以让函数执行，区别在于传参
+
+        // call 执行函数，改变this执行为函数的第一个参数，
+        // 并且可以把从第二个参数到后面的参数传给obj1对象的getName方法的形参
+        // 第二个参数支持多个参数
+        obj1.getName.call(obj2,1,2,3)
+ 
+        //apply 执行函数，并改变this执行为函数的第一个参数
+        //apply就支持两个参数，第二个参数必须是数组
+        obj1.getName.apply(obj2,[1,2,3])
+
+    </script>
+</body>
+</html>

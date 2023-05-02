@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+    </style>
+</head>
+<!-- 要求：定义一个v-big指令，原值放大10倍 -->
+<body>
+    <div id="root">
+        <h3>当前值为<span v-text="n"></span></h3>
+        <h3>放大10倍后<span v-big="n"></span></h3>
+        <button @click="n++">n自增</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:'#root',
+        data() {
+            return {
+                n:1 
+            }
+        },
+        // directives 指令集（自定义的指令可以在里面写）
+        // element 指令绑定的dom元素 ；binding 本次绑定的信息
+        directives:{
+            big(element,binding){//元素，对象(里面包含属性)
+                console.log(element,binding);
+                element.innerText = binding.value*10
+            },
+        }
+    })
+    /*
+        big何时会被调用？
+        1.指令与元素绑定成功
+        2.指令所在的模板被重新解析时
+    */
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+        }
+        section{
+            width: 800px;
+            height: 100px;
+            display: flex;
+            /* 当鼠标悬浮时过渡时间2s */
+            transition-duration: 2s;
+
+            
+        }
+        section:hover{
+            transform: translateX(-400px);
+            /* 当鼠标移开时过渡时间200ms */
+            transition-duration: 200ms;
+            /* 步进过渡 */
+            /* transition-timing-function: step-start; */
+            /* transition-timing-function: step-end; */
+        }
+        div{
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+            background-color: black;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div><img src="./imgs/1.jpg" alt=""></div>
+            <div><img src="./imgs/2.jpg" alt=""></div>
+            <div><img src="./imgs/3.jpg" alt=""></div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+</head>
+<!-- 
+    条件渲染：
+    v-show:boolean 若为false，节点存在display:none
+    v-if:boolean   若为false，节点(DOM)直接被移除
+    template只是一个占位，不存在DOM节点，可以跟v-if使用，不能跟v-show
+
+    v-if
+    v-else-if
+    v-else
+ -->
+<body>
+    <div id="root">
+        <input type="button" value="点击显示" @click="show">
+        当前a值为{{a}}
+        <template v-if="a">
+           <h2>css</h2>
+           <h2>html</h2>
+           <h2>js</h2>
+           <h2>vue</h2>
+        </template>  
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#root",
+        data() {
+            return {
+                a:0
+            }
+        },
+        methods: {
+            show(a){
+                return this.a++
+            }
+        },
+    })
+</script>
+</html>

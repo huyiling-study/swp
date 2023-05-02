@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../bootstrap"
+		},
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../../Vue"
+		},
+		{
+			"path": "../../../../../HDR"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "webProject"
+	}
+}

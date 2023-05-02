@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" required="required" id="uText">
+    <input type="submit">
+    <input type="reset">
+    <script>
+        // var reg = /hyl/
+        // // test 校验 返回true或false
+        // //当失去焦点那一刻校验 文本框内的值是否有reg
+        // // hhjjhylooobb
+        // uText.onblur = function(){
+        //     console.log(reg.test(uText.value))
+        // } 
+
+        // 有一位在中括号内就算true  
+        // var reg =  /[abcdef]/      
+        // console.log(reg.test("xab"))//true
+
+        //取反
+        var reg = /[^abc]/
+        console.log(reg.test("a"))//false
+        console.log(reg.test("abz"))//true
+        console.log(reg.test("xyz"))//true
+
+    </script>
+</body>
+
+</html>

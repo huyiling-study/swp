@@ -1,0 +1,44 @@
+main {
+  width: 1020px;
+  margin: 0 auto;
+  overflow: hidden;
+  /*清除浮动*/
+  border: solid 3px #ddd;
+  padding: 10px;
+}
+main article.hot {
+  outline: 2px blue solid;
+  overflow: hidden;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+main article.hot section {
+  height: 300px;
+}
+main article.hot section:nth-of-type(1) {
+  background-color: red;
+  width: 500px;
+  float: left;
+}
+main article.hot section:nth-of-type(2) {
+  background-color: aqua;
+  width: 500px;
+  float: right;
+}
+main article.product {
+  height: 300px;
+  outline: solid 2px blue;
+  padding: 5px;
+}
+main article.product section.img {
+  background-color: aquamarine;
+  height: 300px;
+  width: 220px;
+  float: left;
+}
+main article.product section.lists {
+  background-color: blue;
+  height: 300px;
+  width: 780px;
+  float: right;
+}

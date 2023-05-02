@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    闭包：
+    函数内部返回一个函数（或者对象中有函数），被外界所引用
+    这个函数内部就不会被销毁
+    内部函数所用到的外部函数的变量 也不会被销毁
+ -->
+<body>
+    
+
+    <script>
+        function outer(){
+            var name = "hyl"
+            return function(){
+                return name = 'ccc'
+            }
+        }
+
+        var func = outer()
+
+        func = null
+
+        /*
+            优点:让基本的临时变量永驻内存
+            缺点：内存泄漏 （用完后可以func=null --回收）
+        */
+    </script>
+</body>
+</html>

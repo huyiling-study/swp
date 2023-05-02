@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    构造函数
+    new Object() new String() new Array()
+ -->
+<body>
+    <script>
+        // 自定义构造函数
+        function createObj(name) {
+            //自动创建对象
+            this.name = name
+            this.material = []
+            this.cook = function(){
+                console.log(this.name);
+            }
+            // 自动返回,不用写return
+        }
+
+        // 给createObj()函数添加了new，他觉得自己牛逼了，叫构造函数
+        var obj1 = new createObj('大盘鸡')
+        var obj2 = new createObj('烧花鸭')
+        console.log(obj1);
+        console.log(obj2);
+        obj1.cook()//this：obj1调用它，他就指向obj1
+        alert(obj1.cook === obj2.cook)//每个新创建的对象都独有一套方法
+        
+    </script>
+
+</body>
+
+</html>

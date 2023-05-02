@@ -1,0 +1,64 @@
+
+
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: #ddd;
+            position: relative;
+            margin: 100px;
+        }
+
+        #box p {
+            width: 250px;
+            height: 150px;
+            background-color: #555;
+            color: white;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            display: none;
+
+            /* 鼠标即使来到p标签，事件也不会产生 */
+            pointer-events: none;
+            /* 穿透 */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p>huyiling</p>
+    </div>
+    <script>
+        box.onmouseover = function () {
+            // this指当前的box元素
+            // 获取p元素
+            this.firstElementChild.style.display = "block"
+        }
+        box.onmouseout = function () {
+            this.firstElementChild.style.display = "none"
+        }
+        box.onmousemove = function (evt) {
+            // console.log(evt.offsetX,evt.offsetY);
+            this.firstElementChild.style.top = evt.offsetY + "px"
+            this.firstElementChild.style.left = evt.offsetX + "px"
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+computed和watch之间的区别
+    1.computed能完成的，watch也能完成
+    2.watch可以完成异步，computer不一定行
+小原则：
+    1.所被Vue管理的函数，最好写成普通函数，这样this的指向才是vm 
+    2.所有不被Vue所管理的函数（定时器的回调函数、ajax回调函数等），最好写成箭头函数
+      这样this的指向才是vm

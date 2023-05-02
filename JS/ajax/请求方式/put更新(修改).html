@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    put 修改（全部覆盖修改前数据）
+ -->
+<body>
+    <button id="myput">put</button>
+    <script>
+        myput.onclick = function () {
+            var xhr = new XMLHttpRequest()
+            // users/1 修改user字段id为1的数据
+            xhr.open("PUT", "http://localhost:3000/users/1")
+
+            xhr.onload = function () {
+                if (/^2\d{2}$/.test(xhr.status)) {
+                    console.log(JSON.parse(xhr.responseText)); 
+                }
+            }
+            
+            //告诉后端数据的格式
+            xhr.setRequestHeader("Content-Type","application/json")
+            xhr.send(JSON.stringify(
+                {
+                    username:"胡伊玲1111"
+                }
+            ))
+        }
+
+    </script>
+</body>
+</html>

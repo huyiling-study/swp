@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <style>
+        input {
+            padding: 5px;
+            position: relative;
+        }
+
+        #visible {
+            position: absolute;
+            top: 15px;
+            left: 160px;
+            display: none;
+        }
+
+        #invisible {
+            position: absolute;
+            top: 15px;
+            left: 160px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="password" id="myPassword">
+        <div class="fa fa-eye " id="visible"></div>
+        <div class="fa fa-eye-slash " id="invisible"></div>
+    </div>
+    <script>
+        var opassword = document.getElementById('myPassword')
+        var ovisible = document.getElementById('visible')
+        var oinvisible = document.getElementById('invisible')
+
+        oinvisible.onclick = function () {
+            // console.log(opassword.type);
+            if(opassword.type === 'password'){
+                opassword.type = "text"
+                oinvisible.style.display = 'none'
+                ovisible.style.display = 'block'
+            }
+        }
+        ovisible.onclick = function () {
+            if(opassword.type === 'text'){
+                opassword.type = "password"
+                oinvisible.style.display = 'block'
+                ovisible.style.display = 'none'
+            }
+        }
+    </script>
+</body>
+
+</html>

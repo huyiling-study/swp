@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    // background-color: red;
+    .XMbox {
+        height: 100vh;
+        background-color: aqua;
+        display: flex;
+        flex-direction: column;
+
+        header {
+            height: 50px;
+            background-color: aliceblue;
+
+            // display: flex;
+            div {
+                display: flex;
+
+                span {
+                    flex: 1;
+                    text-align: center;
+                    line-height: 3em;
+                    border: solid 1px #555;
+                }
+
+                span:nth-of-type(-n+2) {
+                    border-right: none;
+                }
+            }
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+
+            aside {
+                width: 100px;
+                background-color: pink;
+                //侧边弹性盒子
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    text-align: center;
+
+                    li {
+                        flex: 0 0 80px;
+                        outline: #ddd 1px solid;
+                        //让li的内容居中
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            article {
+                flex: 1;
+                background-color: bisque;
+
+            }
+        }
+
+        footer {
+            height: 80px;
+            background-color: aliceblue;
+            //底部横向弹性盒子
+            ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: center;
+                li {
+                    height: 80px;
+                    flex: 1;
+                    outline: #ddd 1px solid;
+                    //让li的内容居中
+                    display: flex;
+                    flex-direction:column;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

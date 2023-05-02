@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login {
+            border: #ddd solid 2px;
+            padding: 50px;
+        }
+
+        .login>div {
+            font-size: 20px;
+        }
+
+        input {
+            font-size: 20px;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+            padding: 5px 0;
+        }
+
+        span {
+            color: #ddd;
+        }
+    </style>
+</head>
+<!-- 
+    onblur="focal()失去焦点
+
+    1.拿到输入框内容
+    2.判断
+        用户名长度
+        判断单个字符是否为字母（0~9 a~z A~Z）
+        首字符是否为字母
+        判断有没有非法字符
+
+ -->
+
+<body>
+    <div class="login">
+        <div>用户名：<input type="text" id="username" placeholder="请输入您的用户名" onblur="focal()"></div>
+        <span id="username_span">6~18个字符,可用字母数字下划线,以字母开头</span>
+    </div>
+
+
+    <script>
+        // 当失去焦点时开始执行该函数
+        function focal() {
+            var oUsername = document.getElementById("username")
+            var oUsernameSpan = document.getElementById("username_span")
+            //拿到输入框内容(表单用.value获得)
+            var oValue = oUsername.value
+
+            if (oValue.length < 6 || oValue.length > 18) {
+                oUsernameSpan.innerHTML = "!长度应为6~18位字符"
+            }
+            // 判断首字符是否为字母
+            else if (!isABC(oValue[0])) {
+                oUsernameSpan.innerHTML = "!用户名必须以英文开头"
+            }
+            // 判断是否符合要求
+            else {
+                var isYes = true;
+                for (var i = 0; i < oValue.length; i++) {
+                    if (!isSXZ(oValue[i])) {
+                        var isYes = false;
+                        break;
+                    }
+                }
+                if (isYes) {
+                    oUsernameSpan.innerHTML = "用户名成功"
+                } else {
+                    oUsernameSpan.innerHTML = "!用户名必须是字母、数字、下划线"
+                }
+            }
+
+
+
+        }
+
+        // 判断单个字符是否为字母
+        function isABC(charStr) {
+            if (charStr >= "A" && charStr <= "Z" || charStr >= "a" && charStr <= "z") {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        // 判断字符串是否是数字、下划线、字母
+        function isSXZ(charStr) {
+            if (charStr >= "A" && charStr <= "Z" || charStr >= "a" && charStr <= "z" || charStr >= 0 && charStr <= 9 || charStr == "_") {
+                return true
+            } else {
+                return false
+            }
+        }
+    </script>
+</body>
+
+</html>

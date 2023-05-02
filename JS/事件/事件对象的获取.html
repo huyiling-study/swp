@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- window.event（IE8以下支持）
+    形参 IE8以下不支持 -->
+<body>
+    <button id="btn1">按钮</button>
+    <script>
+        var Btn = document.getElementById('btn1')
+        Btn.onclick = function (ev) {
+            // 事件对象获取
+            var e = ev || window.event
+            alert(e)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 5, 3, 6, 0, 1]
+
+        // 方法一 
+        // var arr2 = []
+        // for (var i = 0; i < arr.length; i++) {
+        //     // 判断是否有arr2数组重复的值，如果没找到就添加到arr2
+        //     if (arr2.indexOf(arr[i]) === -1) {
+        //         arr2.push(arr[i])
+        //     }
+        // }
+        // console.log(arr2)
+
+
+        //方法二 -利用对象
+        // var obj = {}
+        // for(var i=0;i<arr.length;i++){
+        //     obj[arr[i]] = "随便"
+        // }
+        // console.log(obj);
+        // var arr2 = []
+        // //拿到key
+        // for(i in obj){
+        //     arr2.push(i)
+        // }
+        // console.log(arr2);
+
+        // 方法三
+        //set结构跟数组结构类似，但是set结构可以去重
+        var set1 = new Set(arr)
+        console.log(set1);
+        // 将set结构转换成数组
+        var arr2 = Array.from(set1)
+        console.log(arr2);
+
+    </script>
+</body>
+
+</html>

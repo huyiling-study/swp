@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">请点击我</div>
+    <script>
+        // this关键字
+        // this 谁调用我，this就指向谁 (ES6箭头函数除外)
+
+        // 全局 
+        console.log(this);//window
+        
+        function test1(){
+            console.log(this);//window
+        }
+        test1()
+        // test() 相当于  window.test()
+
+        // 对象
+        var obj = {
+            name:"huyiling",
+            test2:function(){
+                console.log(this);
+                console.log(this.name);
+                //this可以指向obj里的key的值
+            }
+        }
+        obj.test2()//指向0bj
+
+        //setTimeout
+        //被浏览器窗口自动调用 this指向window
+        setTimeout(function(){
+            console.log(1111,this)//windoow
+        },2000)
+        // setInterval(function (){
+        //     console.log(111,this)//window
+        // },10000)
+
+        // 事件绑定的this
+        //dom1
+        box.onclick = function () {
+            console.log(this);//指向box元素节点
+        }
+
+        //dom2
+        box.addEventListener('click',function(){
+            console.log(this);//指向box元素节点
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">aaa</div>
+    <div id="box1">bbb</div>
+    <script>
+        // 绑定多个事件处理函数 按照顺序执行
+        box.addEventListener("click",function(){
+            console.log(111)
+        })
+        box.addEventListener("click",function(){
+            console.log(222)
+        })
+        box.addEventListener("click",function(){
+            console.log(1333)
+        })
+
+        // 后面会覆盖前面
+        box1.onclick = function(){
+            console.log(444);//控制台不打印了
+        }
+        box1.onclick = function(){
+            console.log(555);//覆盖掉444
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 事件对象：
+button 的属性
+当鼠标按下时触发
+0   左键
+1   滚轮
+2   右键
+
+获取当前鼠标位位置(原点位置不一样)：
+clientX clientY 原点位置：可视窗口的左上角为原点(不包括滚动距离)
+pageX   pageY   原点位置：整个页面的左上角(包含滚出去的滚动距离)
+screenX screenY  原点位置：电脑屏幕的左上角
+ -->
+
+<body>
+    <script>
+        document.onmousedown = function (ev) {
+            var e = ev || Window.event;
+            alert(e.button)
+        }
+    </script>
+</body>
+
+</html>

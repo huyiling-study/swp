@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 200px;
+            border: 1px solid #555;
+            display: none;
+            position: absolute;
+        }
+
+        ul li {
+            padding: 10px 0 5px 20px;
+        }
+
+        ul li:hover {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li class="edit">编辑</li>
+        <li class="copy">复制</li>
+        <li class="stick">粘贴</li>
+    </ul>
+    <script>
+        document.addEventListener("contextmenu", function (evt) {
+            // 阻止默认的右击事件(浏览器自带的右击显示模块)
+            evt.preventDefault();
+            list.style.display = "block"
+
+            var x = evt.clientX
+            var y = evt.clientY
+
+            if (x <= 0) x = 0
+            if (y <= 0) y = 0
+            if (y > document.documentElement.clientHeight - list.offsetHeight)
+                y = document.documentElement.clientHeight - list.offsetHeight;
+            if (x > document.documentElement.clientWidth - list.offsetWidth)
+                x = document.documentElement.clientWidth - list.offsetWidth;
+
+            list.style.left = x + "px"
+            list.style.top = y + "px"
+        })
+
+        // 获取li元素
+        let lis = list.children
+        console.log(lis);
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function (evt) {
+                // 控制台输出事件源
+                console.log(evt.target);
+                if (evt.target.className == "copy") {
+                    console.log("复制");
+                }
+                if (evt.target.className == "edit") {
+                    console.log("编辑");
+                }
+                if (evt.target.className == "stick") {
+                    console.log("粘贴");
+                }
+            }
+        }
+
+        document.onmouseup = function(ev){
+            if(ev.button == 0){
+                // document.oncontextmenu = null
+                list.style.display = "none"
+                console.log('鼠标抬起');
+            }
+        }
+
+    </script>
+</body>
+
+</html>

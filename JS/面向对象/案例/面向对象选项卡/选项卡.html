@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .header {
+            display: flex;
+            width: 500px;
+        }
+
+        .header li {
+            flex: 10;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        .box li {
+            position: absolute;
+            /* top: 0;
+            left: 0; */
+            width: 500px;
+            height: 500px;
+            background-color: antiquewhite;
+            display: none;
+        }
+
+        .header .active {
+            background-color: paleturquoise;
+        }
+
+        .box .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="header">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <ul class="box">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        var headerLis = document.querySelectorAll('.header li')
+        var boxLis = document.querySelectorAll('.box li')
+
+        // console.log(headerLis,boxLis);
+        for (var i = 0; i < headerLis.length; i++) {
+            // 自定义属性
+            headerLis[i].dataset.index = i
+            // console.log(i)
+            headerLis[i].onclick = head
+
+        }
+        // console.log(i)
+        function head() {
+            // 拿到自定义属性
+            var index = this.dataset.index
+            console.log(index);
+            for (var j = 0; j < headerLis.length; j++) {
+                headerLis[j].classList.remove('active')
+                boxLis[j].classList.remove('active')
+
+            }
+            headerLis[index].classList.add('active')
+            boxLis[index].classList.add('active')
+        }
+
+
+    </script>
+</body>
+
+</html>

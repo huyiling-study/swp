@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" data-hyl="huyiling">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        //获取自定义属性
+        console.log(box.dataset);
+        //添加自定义属性
+        box.dataset.chy = 'caohongyuu'
+        console.log(box.dataset);
+        //删除自定义属性
+        delete box.dataset.hyl
+        console.log(box.dataset);
+
+        //用dataset方法给box内的li添加自定义属性
+        var lis = document.querySelectorAll('li')
+        for(var i=0;i<lis.length;i++){
+            lis[i].dataset.index = i
+        }
+        
+    </script>
+</body>
+</html>

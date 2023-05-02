@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="mytext">
+    <button id="myadd">add</button>
+    <ul class="list">
+
+    </ul>
+    <script type="module">
+        import { ajax, pajax } from "./util.js"
+
+        class ToduList {
+            constructor(select) {
+                this.listEle = document.querySelector(select)
+                this.listdata = [] //存列表数据
+                this.init()
+            }
+            //初始化
+            init() {
+                //绑定事件
+                this.bindEvent()
+                // 获取数据
+                this.getItem().then(res => {
+                    // console.log(res);
+                    this.listdata = res
+                    this.render()
+                })
+            }
+
+            bindEvent() {
+                this.listEle.onclick = (ev) => {
+                    if (ev.target.nodeName === "BUTTON") {
+                        this.removeItem(ev.target)
+                    }
+                }
+            }
+
+            getItem() {
+                return pajax({
+                    url: "http://localhost:3000/list"
+                })
+            }
+
+
+            addItem(text) {
+                pajax({
+                    url: `http://localhost:3000/list`,
+                    method: 'POST',
+                    data: {
+                        // text:text,
+                        text
+                    },
+                }).then(res => {
+                    this.listdata = [...this.listdata, res]
+                    this.render()
+                })
+            }
+
+            //删除
+            removeItem(target) {
+                target.parentNode.remove()
+                pajax({
+                    url: `http://localhost:3000/list/${target.dataset.index}`,
+                    method: 'DELETE',
+                }).then(res => {
+                    console.log('删除成功，id为' + target.dataset.index);
+                })
+            }
+            //更新
+            updataItem() {
+
+            }
+
+            // 渲染界面的方法 
+            render() {
+                this.listEle.innerHTML = this.listdata.map(item => `
+                <li>
+                    ${item.text}
+                    <button data-index=${item.id}>del</button>
+                </li>
+                `).join("")
+            }
+        }
+
+
+        var obj = new ToduList('.list')
+        console.log(obj);
+
+        myadd.onclick = function () {
+            //obj对象调用add方法，将text的value添加上去
+            obj.addItem(mytext.value)
+        }
+
+
+        // 实现的是，当界面没有拿到后端数据时显示loading...数据加载完成loading消失
+        // console.log("显示加载中...");
+
+        // document.body.innerHTML = `<h1>Loading...</h1>`
+
+
+        // var q1 = pajax({
+        //     url: "http://localhost:3000/looplist"
+        // })
+        // var q2 = pajax({
+        //     url: "http://localhost:3000/datalist"
+        // })
+
+        // setTimeout(function () {
+            //  当两个promise对象都兑现承诺，就走then
+        //     Promise.all([q1, q2]).then(res => {
+        //         console.log(res);
+
+        //         document.body.innerHTML = `加载完毕`
+
+        //     }).catch(err=>{
+        //      console.log(err)
+        //     })
+        // }, 3000)
+    </script>
+</body>
+
+</html>

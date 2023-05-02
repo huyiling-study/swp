@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    封装回调
+ -->
+
+<body>
+
+    <script src="./util.js"></script>
+    <script>
+        //get
+        // ajax({
+        //     // method,async的默认值符合 get 方法的要求,直接使用默认值
+        //     url: "http://localhost:3000/users",
+        //     success: function (res) {
+        //         console.log('success', res);
+        //     },
+        //     error: function (err) {
+        //         console.log('error', err);
+        //     },
+        // })
+
+        //post
+        ajax({
+            url: "http://localhost:3000/users",
+            method: "POST",
+            // data: "username=huyiling&password=789000",
+            data: {
+                username: "huyiling123",
+                password: "789000"
+            },
+            headers: {
+                "content-type":"application/x-www-form-urlencoded"
+            },
+            success: function (res) {
+                console.log('sucess', res);
+            },
+            error: function (err) {
+                console.log('error', err);
+            },
+        })
+
+    </script>
+</body>
+
+</html>

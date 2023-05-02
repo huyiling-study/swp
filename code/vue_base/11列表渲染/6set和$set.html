@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+            padding: 5px;
+        }
+    </style>
+</head>
+<!-- 
+    可以控制台检验：vm._date.student === vm.student
+    Vue.set(target,key,value)
+    target:不能是vm实例，不能是vm实例的根数据对象(vm.data)
+-->
+
+<body>
+    <div id="root">
+        <h2>学生信息</h2>
+        <button @click="addSex">添加性别</button>
+        <p>姓名：{{student.name}}</p>
+        <!-- 如果性别存在，就展示 -->
+        <p v-if="student.sex">性别：{{student.sex}}</p>
+        <p>年龄：{{student.age}}</p>
+    </div>
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                student:{
+                    name:'胡伊玲',
+                    age:'18',
+                }
+            }
+        },
+        methods: {
+            addSex(){
+                // 两种写法效果一样
+                // 用这种方式后期添加的数据是响应式的（有getter和setter方法）
+                // Vue.set(this.student,"sex","女")
+                this.$set(this.student,"sex","女")
+            }
+        },
+    })
+
+    
+</script>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h3>鞋</h3>
+        <input type="text" v-model="keyWord">
+        <button @click="sortType=2">升序</button>
+        <button @click="sortType=1">降序</button>
+        <button @click="sortType=0">原序</button>
+        <ul>
+            <li v-for="(p,index) of filPersons" :key="p.id">
+                {{p.name}}&nbsp;&nbsp;&nbsp;${{p.price}}
+            </li>
+        </ul>
+    </div>
+</body>
+<!-- 
+    维护filPersons
+    filperson过滤出的符合条件的数据
+    在filPerson里给数据排序
+-->
+<script>
+    //用computed实现
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                keyWord: "",
+                sortType:0,//排序类型，0原类型
+                persons: [
+                    { id: '001', name: 'Nike_479',price:'670'},
+                    { id: '002', name: 'AnTa_956',price:'230'},
+                    { id: '003', name: 'LiNing_956',price:'450'},
+                    { id: '004', name: 'Nike_358',price:'830'},
+                    { id: '005', name: 'LiNing_356',price:'270'},
+                    { id: '006', name: 'LiNing_586',price:'970'},
+                    { id: '007', name: 'Nike_358',price:'1070'},
+                    { id: '007', name: 'AnTa_956',price:'290'},
+                    { id: '007', name: 'AnTa_266',price:'360'},
+
+                ],
+            }
+        },
+        // 计算属性靠返回值，依赖数据keyWord发生改变重新计算
+        computed:{
+            filPersons(){
+                const arr =  this.persons.filter((item)=>{
+                    return item.name.indexOf(this.keyWord) !== -1
+                })
+                // 判断是否需要排序
+                if(this.sortType){
+                    arr.sort((a,b)=>{
+                        return this.sortType === 1 ?a.price-b.price:b.price-a.price
+                    })
+                }
+                return arr
+            }
+        }
+    })
+</script>
+
+</html>

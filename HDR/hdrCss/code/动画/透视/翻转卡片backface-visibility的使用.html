@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            border: 5px solid #ffcccc;
+            width: 400px;
+            height: 400px;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 900px;
+            transform: perspective(900px) rotateY(50deg);
+        }
+        main:hover div:nth-child(1){
+            transform: rotateY(-180deg);
+        }
+        main:hover div:nth-child(2){
+            transform: rotateY(0deg);
+        }
+        div{
+            transition: 2s;
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden ;
+        }
+        div:nth-child(1){
+            background-color: #ffcccc;
+        }
+        div:nth-child(2){
+            background-color:#7efff5;
+            transform: rotateY(180deg);
+
+            
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div>1</div>
+        <div>2</div>
+    </main>
+</body>
+</html>

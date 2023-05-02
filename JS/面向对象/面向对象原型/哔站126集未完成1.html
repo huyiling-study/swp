@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box1">
+        <h3></h3>
+        <ul></ul>
+    </div>
+    <div class="box2">
+        <h3></h3>
+    </div>
+
+    <script>
+        var data1 = {
+            title:'体育',
+            list:['sport-1','sport-2','sport-3']
+        }
+
+        var data2 = {
+            title:'爱好',
+            list:['hobby-1','hobby-2','hobby-3']
+        }
+
+        function CreateObj(select,data){
+            // 获取节点
+            var ele = document.querySelector(select)
+            console.log(ele);
+            // console.log(ele.querySelector("h3"));
+            //节点的值
+            this.title = data.title,
+            //将来节点的列表信息
+            this.list = data.list
+
+            this.render = function(){
+                console.log(111);
+                // 渲染页面
+                var h3 = document.querySelector('h3')
+                console.log(h3);
+            }
+        }
+
+        var obj1 = new CreateObj(".box1",data1)
+        obj1.render()
+        
+        // console.log(obj1);
+
+
+
+        // function CreateObj(title,list){
+        //     this.title = title;
+        //     this.list = list;
+        // }
+
+        // var obj1 = new CreateObj(data1.title,data1.list)
+        // console.log(obj1);
+
+        // var obj2 = new CreateObj(data2.title,data2.list)
+        // console.log(obj2);
+    </script>
+</body>
+</html>

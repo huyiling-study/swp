@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 3000px;
+            width: 1500px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 算上滚动条
+        console.log('宽度'+window.innerWidth,innerWidth);
+        console.log('高度'+window.innerHeight,innerHeight);
+
+        // 不算滚动条
+        console.log('宽度'+document.documentElement.clientWidth);
+        console.log('高度'+document.documentElement.clientHeight);
+    </script>
+</body>
+</html>

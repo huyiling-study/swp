@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: antiquewhite;
+        }
+        main{
+            width: 100vw;
+            height: 100px;
+            background-color: aqua;
+        }
+        main>div{
+            background-color: darkgoldenrod;
+            height: -webkit-fill-available;
+        }
+        span{
+            background-color: thistle;
+            /* 行级元素使用它要改为块级元素 */
+            display: block;
+            height: -webkit-fill-available;
+            /* width: -webkit-fill-available; */
+
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div>
+            huyiling
+        </div>
+        <span>hyl</span>
+    </main>
+</body>
+</html>

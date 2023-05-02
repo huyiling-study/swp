@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            width: 600px;
+            height: 200px;
+            border: #ddd solid 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+
+    </div>
+    <script>
+        setInterval(function(){
+            var odiv = document.getElementById("div1")
+            odiv.innerHTML = showTime()
+        },1000)
+
+
+        function showTime() {
+            var d = new Date()
+            var year = d.getFullYear();
+            var mouth = d.getMonth()+1;//0~11
+            var date = d.getDate();
+
+            var day = numOfChines(d.getDay())
+
+            var time =  units(d.getHours());
+            var minute = units(d.getMinutes());
+            var seconds = units(d.getSeconds());
+
+            var str = `${year}年${mouth}月${date}日  星期${day} ${time}:${minute}:${seconds}`
+
+            return str;
+        }
+        function numOfChines(num) {
+                var arr = ['天', '一', '二', '三', '四', '五']
+                return arr[num]
+            }
+        function units(num){
+            if(num<10){
+                return "0"+ num;
+            }else{
+                return num;
+            }
+        }
+
+    </script>
+</body>
+</html>

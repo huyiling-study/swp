@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Promise构造函数
+        // new Promise 传了一个函数进去 返回的是 Promise对象 
+        var q = new Promise(function (resolve, reject) {
+            // 异步
+            setTimeout(() => {
+                // 成功兑现承诺
+                resolve([111, 222, 333])
+                // 失败拒绝兑现承诺
+                // reject()
+            }, 2000)
+        })
+
+        // q 是 Promise 对象
+        // 注册了一个成功回调函数,和一个失败回调函数
+        q.then(function (res) {
+            // 兑现承诺,这个函数被执行
+            console.log("success", res);
+        }).catch(function () {
+            // 拒绝承诺,这个函数被执行
+            console.log("fail");
+        })
+
+        // new Promise(function (resolve, reject) {
+        //     // resolve 表示回调成功
+        //     // reject 表示回调失败
+
+        // }).then(function (res) {
+        //     //成功,就执行成功函数
+        // }).catch(function (res) {
+        //     // 失败就执行失败函数
+        // })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    fatch
+    不需要借助任何模块和任何js文件的
+ -->
+<!-- 
+    fatch(url,option)
+ -->
+
+<body>
+    <button id="myget">get</button>
+    <button id="mypost">post</button>
+    <button id="mypatch">patch</button>
+    <button id="myput">put</button>
+    <button id="mydelete">delete</button>
+</body>
+<script>
+    myget.onclick = function () {
+        // 默认get请求,不用传第二个参数
+        // 这里是一个错误的url
+        fetch("http://localhost:3000/users111")
+            .then((res) => {
+                console.log(res);
+                // 错误处理
+                // 如果请求回来的结果是成功的，我们return出这个Promise对象，走then
+                if (res.ok) {
+                    //res.json()是json格式的Promise对象
+                    return res.json()
+                } else {
+                    // Promise.resolve()
+                    //否则fatch传入的接口错误时，拒绝承诺，走catch分支
+                    return Promise.reject({
+                        status: res.status,
+                        statusText: res.statusText
+                    });
+                }
+            })
+            .then(res => {
+                // 在第二个then才能拿到接口数据
+                console.log('success', res);
+            }).catch(err => {
+                console.log('error', err);
+            })
+        // 简写
+        // get请求查找username为Marry
+        // var username = "Marry"
+        // fetch(`http://localhost:3000/users?username=${username}`)
+        // .then((res)=>res.json())//res.text()拿到的是字符串
+        // .then(res=>{
+        //     console.log(res);
+        // })
+    }
+    mypost.onclick = function () {
+        fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {
+                // fatch 声明是什么格式就按照什么格式传数据（key=value&key=value）
+                // "content-type": "application/x-www-form-urlencoded"
+                // json格式
+                "content-type": "application/json"
+            },
+            // body: "username=胡伊玲&password=123456"
+            body: JSON.stringify({
+                username: '胡伊玲',
+                password: '123456'
+            })
+        })
+        .then((res) => res.json()
+        .then(res => console.log(res))
+        )
+    }
+    myput.onclick = function () {
+        fetch("http://localhost:3000/users/2", {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+                username: "Frank123"
+            })
+        }).then((res) => {
+            console.log(res);
+        })
+    }
+    mypatch.onclick = function () {
+        fetch("http://localhost:3000/users/3", {
+            method: "PATCH",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+                username: "胡伊玲"
+            })
+        }).then((res) => {
+            console.log(res);
+        })
+    }
+    mydelete.onclick = function () {
+        fetch("http://localhost:3000/users/1", {
+            method: "DELETE",
+        }).then((res) => {
+            console.log(res);
+        })
+    }
+
+</script>
+
+</html>

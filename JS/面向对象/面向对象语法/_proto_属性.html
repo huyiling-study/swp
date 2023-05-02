@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    构造函数构造出来的对象，
+    都有一个属性__proto__,指向构造出这个对象的构造函数的原型 
+ -->
+<body>
+    <script>
+        function Person({name,age,sex}){
+            this.name = name
+            this.age = age
+            this.sex = sex
+        }
+        Person.prototype ={
+            vehicle:function(){
+                alert(`${this.name}开大奔`)
+            },
+            showSelf:function(){
+                alert(`我是${this.name}，今年${this.age}，性别${this.sex}`)
+            }
+        }
+
+        var person1 = new Person({
+            name:'胡伊玲',
+            age:18,
+            sex:'female'
+        })
+        var person2 = new Person({
+            name:'胡文刚',
+            age:46,
+            sex:'male'
+        })
+
+        console.log(person1,person2);
+        person2.vehicle()
+        person2.showSelf()
+
+        // Person构造函数，构造出来的person2对象的_proto_属性，指向构造函数的原型
+        alert(person1.__proto__ == Person.prototype);//true 
+        alert(person2.__proto__ == Person.prototype);//true
+        alert(person1.__proto__ == person2.__proto__) //true
+
+   </script>
+</body>
+</html>

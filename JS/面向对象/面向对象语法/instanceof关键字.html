@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--instanceof 关键字 判断一个对象是不是构造函数构造出来的 -->
+</head>
+<body>
+    <script>
+        function Person({name,age,sex}){
+            // this = new Object()
+            // 添加属性 
+            this.name = name
+            this.age = age
+            this.sex = sex
+        }
+        Person.prototype ={
+            // 简写vehicle()
+            vehicle:function(){
+                alert(`${this.name}开大奔`)
+            },
+            showSelf:function(){
+                alert(`我是${this.name}，今年${this.age}，性别${this.sex}`)
+            }
+        }
+
+        var person1 = new Person({
+            name:'胡伊玲',
+            age:18,
+            sex:'female'
+        })
+        var person2 = new Person({
+            name:'胡文刚',
+            age:46,
+            sex:'male'
+        })
+
+        person1.vehicle()
+        alert(person1 instanceof Person)//true
+        alert(person1 instanceof Object)//true，所有构造函数构造出来的，全是对象，都是Object
+
+   </script>
+</body>
+</html>

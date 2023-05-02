@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    localStorage 永久存储
+    session 会话存储（关闭页面就丢失）
+ -->
+<body>
+    <button id="Btn1">存</button> 
+    <button id="Btn2">取</button> 
+    <button id="Btn3">删</button> 
+    <button id="Btn4">清除</button> 
+    <script>
+     Btn1.onclick = function(){
+         sessionStorage.setItem('name','huyiling')
+         sessionStorage.setItem('age','18')
+ 
+         sessionStorage.setItem('obj',JSON.stringify({name:'frank',age:18}))
+     }
+     Btn2.onclick = function(){
+         sessionStorage.getItem('name')
+         console.log(sessionStorage.getItem('name'));
+         
+         console.log(JSON.parse(sessionStorage.getItem('obj')));
+     }
+     Btn3.onclick = function(){
+         sessionStorage.removeItem('age')
+     }
+     Btn4.onclick = function(){
+         sessionStorage.clear()
+     }
+    </script>
+</body>
+</html>

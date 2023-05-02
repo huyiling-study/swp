@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="div1"></div>
+    <script>
+        // 面向过程
+        // window.onload = function () {
+        //     var oDiv = document.getElementById('div1')
+        //     oDiv.onmousedown = function (ev) {
+        //         var e = ev || window.event
+        //         // console.log(e.offsetX,e.offsetY);//获取当前按的物体，和物体的相对位子
+        //         var offsetX = e.clientX - oDiv.offsetLeft;
+        //         var offsetY = e.clientY - oDiv.offsetTop;
+
+        //         document.onmousemove = function (ev) {
+        //             var e = ev || window.event
+        //             oDiv.style.left = e.clientX - offsetX + "px"
+        //             oDiv.style.top = e.clientY - offsetY + "px"
+        //         }
+        //     }
+
+        //     document.onmouseup = function () {
+        //         document.onmousemove = null
+        //     }
+        // }
+
+
+
+        /*
+            改造：
+            1.不能有函数嵌套
+            2.可以有全局变量
+        
+            面向过程 => 面向对象
+            1.window.onload => 构造函数
+            2.全局变量 => 构造函数的属性 
+            3.全局函数 => 构造函数的方法
+         */
+
+
+
+
+        // 面向对象
+        /*
+        2.(在属性前面加this. 构造函数语法)
+        var oDiv = null;
+        var offsetX = 0;
+        var offsetY = 0;
+        */
+
+        /*
+        1.
+        window.onload = function () {
+            oDiv = document.getElementById('div1')
+            oDiv.onmousedown = funcDown
+            document.onmouseup = funcUp
+        }
+        */
+        function Drag(id) {
+            this.oDiv = document.getElementById(id)
+            var _this = this
+            // 构造函数调用方法 用 (构造函数.) 调用 --this.funcDown this.funcUp
+            this.oDiv.onmousedown = function(){
+                _this.funcDown()
+            }
+            document.onmouseup = this.funcUp
+        }
+
+        /*
+        3.
+        function funcDown(ev) {
+            var e = ev || window.event
+            this.offsetX = e.clientX - this.oDiv.offsetLeft;
+            this.offsetY = e.clientY - this.oDiv.offsetTop;
+            document.onmousemove = funcMove
+        }
+        */
+        Drag.prototype.funcDown = function (ev) {
+            var e = ev || window.event
+            var _this = this
+            this.offsetX = e.clientX - this.oDiv.offsetLeft;
+            this.offsetY = e.clientY - this.oDiv.offsetTop;
+            // 构造函数调用方法 用 (构造函数.) 调用 --this.funcMove
+            document.onmousemove = function(){
+                _this.funcMove()
+            }
+        }
+
+        /*
+        3.
+        function funcMove(ev) {
+            var e = ev || window.event
+            this.oDiv.style.left = e.clientX - this.offsetX + "px"
+            this.oDiv.style.top = e.clientY - this.offsetY + "px"
+        }
+        */
+        Drag.prototype.funcMove = function (ev) {
+            var e = ev || window.event
+            this.oDiv.style.left = e.clientX - this.offsetX + "px"
+            this.oDiv.style.top = e.clientY - this.offsetY + "px"
+        }
+        /*
+        3.
+         function funcUp() {
+             document.onmousemove = null
+             console.log('鼠标抬起');
+         }
+         */
+        Drag.prototype.funcUp = function () {
+            document.onmousemove = null
+        }
+
+
+        window.onload = function(){
+            new Drag('div1')
+        }
+    </script>
+</body>
+
+</html>
